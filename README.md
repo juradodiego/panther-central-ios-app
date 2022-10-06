@@ -1,4 +1,4 @@
-# panther_central_ios_app
+# Panther Central iOS App
 
 CS 1635 Term Project
 

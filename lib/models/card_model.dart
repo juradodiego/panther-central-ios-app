@@ -1,4 +1,4 @@
-import 'AddressModel.dart';
+import 'package:panther_central_ios_app/models/address_model.dart';
 
 class Card {
 

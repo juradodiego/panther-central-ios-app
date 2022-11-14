@@ -1,5 +1,5 @@
-import 'TransactionModel.dart';
-import 'CardModel.dart';
+import 'package:panther_central_ios_app/models/transaction_model.dart';
+import 'package:panther_central_ios_app/models/card_model.dart';
 
 class User {
 

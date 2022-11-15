@@ -5,14 +5,14 @@ class SelectAmountScreen extends StatefulWidget {
   _SelectAmountScreenState createState() => _SelectAmountScreenState();
 }
 
-class _SelectAmountScreenState extends State<SelectAmountScreen>{
+class _SelectAmountScreenState extends State<SelectAmountScreen> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
 
     return Scaffold(
-
-    );
+        backgroundColor: PC_BLUE,
+        body: SingleChildScrollView(child: Column(children: <Widget>[])));
   }
 }

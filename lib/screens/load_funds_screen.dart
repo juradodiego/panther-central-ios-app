@@ -26,6 +26,25 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                       child:
                           Image.asset('asset/images/panther-central-logo.png')),
                 )),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Container(
+                height: 75,
+                width: 350,
+                decoration: BoxDecoration(
+                    color: PC_YELLOW,
+                    borderRadius: BorderRadius.circular(20)),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Go back',
+                    style: TextStyle(color: PC_BLUE, fontSize: 25),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

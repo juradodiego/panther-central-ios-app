@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/screens/load_funds_screen.dart';
 import 'package:panther_central_ios_app/screens/accounts_screen.dart';
 import 'package:panther_central_ios_app/screens/transactions_screen.dart';
+import 'package:panther_central_ios_app/screens/settings_screen.dart';
 import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
 import 'package:provider/provider.dart';
@@ -21,7 +22,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       _selectedIndex = index;
     });
     pageController.jumpToPage(_selectedIndex);
-
   }
 
   @override
@@ -33,39 +33,49 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
         backgroundColor: PC_BLUE,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100), // Set this height
+          child: Container(
+            color: PC_BLUE,
+            child: Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 30.0),
+                  child: SizedBox(
+                      width: 75,
+                      height: 75,
+                      child:
+                          Image.asset('asset/images/panther-central-logo.png')),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 200, top: 30.0, right: 10),
+                  child: IconButton(
+                    icon: Icon(Icons.settings),
+                    iconSize: 60,
+                    color: PC_YELLOW,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => SettingsScreen()));
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         body: PageView(
           controller: pageController,
           children: [
-          /* ACCOUNT PAGE */
+            /* ACCOUNT PAGE */
             SingleChildScrollView(
               child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 300, top: 30.0),
-                      child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Image.asset('asset/images/panther-central-logo.png')
-                      ),
-                    ),
-                  ],
-                ),
+                children: <Widget>[],
+              ),
             ),
-          /* DASHBOARD PAGE */
+            /* DASHBOARD PAGE */
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  /* PC LOGO */
-                  Padding(
-                      padding: const EdgeInsets.only(right: 300, top: 30.0),
-                      child: Center(
-                        child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Image.asset(
-                                'asset/images/panther-central-logo.png')),
-                      )),
-                  // TODO Add Settings Gear and Screen Link
                   /* PANTHER FUNDS ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
@@ -89,8 +99,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           borderRadius: BorderRadius.circular(20)),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => LoadFundsScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => LoadFundsScreen()));
                         },
                         child: const Text(
                           'Load Funds',
@@ -126,19 +138,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
-          /*TRANSACTION PAGE*/
+            /*TRANSACTION PAGE*/
             SingleChildScrollView(
               child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(right: 300, top: 30.0),
-                    child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Image.asset('asset/images/panther-central-logo.png')
-                    ),
-                  ),
-                ],
+                children: <Widget>[],
               ),
             )
           ],

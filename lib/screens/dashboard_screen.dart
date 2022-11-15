@@ -31,33 +31,42 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
         backgroundColor: PC_BLUE,
+        /* APPBAR: PC LOGO + SETTINGS BUTTON */
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100), // Set this height
-          child: Container(
-            color: PC_BLUE,
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, top: 30.0),
-                  child: SizedBox(
-                      width: 75,
-                      height: 75,
-                      child:
-                          Image.asset('asset/images/panther-central-logo.png')),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 200, top: 30.0, right: 10),
-                  child: IconButton(
-                    icon: Icon(Icons.settings),
-                    iconSize: 60,
-                    color: PC_YELLOW,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => SettingsScreen()));
-                    },
+          child: Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Container(
+              color: PC_BLUE,
+              child: Row(
+                children: <Widget>[
+                  /* PC LOGO */
+                  Padding(
+                    padding: const EdgeInsets.only(left:10),
+                    child: SizedBox(
+                        width: 75,
+                        height: 75,
+                        child: Image.asset(
+                            'asset/images/panther-central-logo.png')),
                   ),
-                ),
-              ],
+                  Spacer(),
+                  /* SETTINGS BUTTON */
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      icon: Icon(Icons.settings),
+                      iconSize: 60,
+                      color: PC_YELLOW,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => SettingsScreen()));
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -68,9 +77,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  Icon(Icons.warning_rounded, size: 75, color: PC_YELLOW,),
-                  Text("Under Construction", style: TextStyle(fontWeight: FontWeight.bold, color: PC_YELLOW),),
-
+                  Icon(
+                    Icons.warning_rounded,
+                    size: 75,
+                    color: PC_YELLOW,
+                  ),
+                  Text(
+                    "Under Construction",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: PC_YELLOW),
+                  ),
                 ],
               ),
             ),
@@ -81,7 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   /* PANTHER FUNDS ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 0),
                     child: Container(
                       height: 75,
                       width: 350,
@@ -99,6 +115,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                           color: PC_YELLOW,
                           borderRadius: BorderRadius.circular(20)),
+                      // TODO Change from TextButton -> ElevatedButton
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -144,8 +161,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  Icon(Icons.warning_rounded, size: 75, color: PC_YELLOW,),
-                  Text("Under Construction", style: TextStyle(fontWeight: FontWeight.bold, color: PC_YELLOW),),
+                  Icon(
+                    Icons.warning_rounded,
+                    size: 75,
+                    color: PC_YELLOW,
+                  ),
+                  Text(
+                    "Under Construction",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: PC_YELLOW),
+                  ),
                 ],
               ),
             )

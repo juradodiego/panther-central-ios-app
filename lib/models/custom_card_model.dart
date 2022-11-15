@@ -1,6 +1,6 @@
 import 'package:panther_central_ios_app/models/address_model.dart';
 
-class Card {
+class CustomCard {
   final String name;
   final String nameOnCard;
   final int number;
@@ -8,7 +8,7 @@ class Card {
   final int cvv;
   final Address billing;
 
-  Card(
+  CustomCard(
       {required this.name,
       required this.nameOnCard,
       required this.number,
@@ -16,8 +16,8 @@ class Card {
       required this.cvv,
       required this.billing});
 
-  factory Card.fromJson(Map<String, dynamic> json) {
-    return Card(
+  factory CustomCard.fromJson(Map<String, dynamic> json) {
+    return CustomCard(
         name: json["Name"],
         nameOnCard: json["NameOnCard"],
         number: json["Number"],
@@ -25,6 +25,8 @@ class Card {
         cvv: json["CVV"],
         billing: Address.fromJson(json["Billing"]));
   }
+
+
 
   @override
   String toString() {

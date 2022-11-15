@@ -16,11 +16,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: PC_BLUE,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(100), // Set this height
-            child: Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                height: 75,
+                width: 75,
                 color: PC_BLUE,
                 child: Row(children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 30.0),
+                    padding: const EdgeInsets.only(left: 10),
                     child: IconButton(
                       icon: Icon(Icons.arrow_back_ios_new),
                       iconSize: 40,
@@ -30,7 +34,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       },
                     ),
                   ),
-                ]))),
+                ]),
+              ),
+            )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
           // TODO Add Setting Toggles

@@ -12,6 +12,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context){
-    return Scaffold();
+
+    const PC_YELLOW = Color.fromARGB(255,255, 185,29);
+    const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+
+    return Scaffold(
+      backgroundColor: PC_BLUE,
+
+    );
   }
 }

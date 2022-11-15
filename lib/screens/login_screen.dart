@@ -8,69 +8,92 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    const PC_YELLOW = Color.fromARGB(255,255, 185,29);
+    const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("Login Page"),
-      ),
+      backgroundColor: PC_BLUE,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            /* PC LOGO */
             Padding(
-                padding: const EdgeInsets.only(top: 60.0),
+                padding: const EdgeInsets.only(top: 30.0, bottom: 30),
                 child: Center(
-                  child: Container(
-                    width: 200,
-                    height: 150,
-                  ),
+                  child: SizedBox(
+                      width: 200,
+                      height: 150,
+                      child:
+                          Image.asset('asset/images/panther-central-logo.png')),
                 )),
+            /* USERNAME INPUT */
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     labelText: 'Username',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                    ),
                     hintText: 'Enter a valid username ex. abc@gmail.com'),
               ),
             ),
+            /* PASSWORD INPUT */
             const Padding(
               padding:
                   EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                    ),
                     hintText: 'Enter a secure password'),
               ),
             ),
+            /* FORGOT PASSWORD BUTTON */
             TextButton(
               onPressed: () {
                 // TODO FORGOT PASSWORD SCREEN GOES HERE
               },
               child: const Text(
                 'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+                style: TextStyle(color: PC_YELLOW, fontSize: 15),
               ),
             ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => DashboardScreen()));
-                },
-                child: const Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+            /* LOGIN BUTTON */
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child : Container(
+                height: 50,
+                width: 250,
+                decoration: BoxDecoration(
+                    color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => DashboardScreen()));
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(color: PC_BLUE, fontSize: 25),
+                    ),
+                  ),
                 ),
               ),
-            ),
             const SizedBox(
               height: 130,
             ),

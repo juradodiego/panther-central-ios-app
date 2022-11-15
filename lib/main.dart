@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/screens/dashboard_screen.dart';
+import 'package:panther_central_ios_app/screens/login_screen.dart';
 import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
 import 'package:provider/provider.dart';
@@ -14,13 +15,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Users MVVM Architecture",
+      title: "Panther Central",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: ChangeNotifierProvider(
-        create: (context) => UsersListViewModel(),
-        child: DashboardScreen(),
-      ),
+      home: LoginScreen(),
     );
   }
 }

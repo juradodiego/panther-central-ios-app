@@ -1,32 +1,34 @@
-import ;
+import 'package:panther_central_ios_app/models/user_model.dart';
+import 'package:panther_central_ios_app/models/transaction_model.dart';
+import 'package:panther_central_ios_app/models/card_model.dart';
 
 class UserViewModel {
 
   final User user;
 
-  UserViewModel({this.user});
+  UserViewModel({required this.user});
 
   String get firstName {
-    return this.user.firstName;
+    return user.firstName;
   }
 
   String get lastName {
-    return this.user.lastName;
+    return user.lastName;
   }
 
   String get role {
-    return this.user.role;
+    return user.role;
   }
 
   Map<String, double> get accounts {
-    return this.user.accounts;
+    return user.accounts;
   }
 
   List<Transaction> get transactions {
-    return this.user.transactions;
+    return user.transactions;
   }
 
-  List<Cards> get cards {
-    return this.user.cards;
+  List<Card> get cards {
+    return user.cards;
   }
 }

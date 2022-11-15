@@ -3,12 +3,12 @@ import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
 import 'package:provider/provider.dart';
 
-class DashboardPage extends StatefulWidget {
+class DashboardScreen extends StatefulWidget {
   @override
-  _DashboardPageState createState() => _DashboardPageState();
+  _DashboardScreenState createState() => _DashboardScreenState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   void initState() {

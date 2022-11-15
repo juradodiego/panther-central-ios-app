@@ -13,6 +13,24 @@ class _SelectAmountScreenState extends State<SelectAmountScreen> {
 
     return Scaffold(
         backgroundColor: PC_BLUE,
+        /* GO BACK ICON BUTTON */
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(100), // Set this height
+            child: Container(
+                color: PC_BLUE,
+                child: Row(children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, top: 30.0),
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_new),
+                      iconSize: 40,
+                      color: PC_YELLOW,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ]))),
         body: SingleChildScrollView(child: Column(children: <Widget>[])));
   }
 }

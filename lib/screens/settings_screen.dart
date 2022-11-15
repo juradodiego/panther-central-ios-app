@@ -6,30 +6,44 @@ class SettingsScreen extends StatefulWidget {
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen>{
+class _SettingsScreenState extends State<SettingsScreen> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
-    
+
     return Scaffold(
         backgroundColor: PC_BLUE,
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(100), // Set this height
+            child: Container(
+                color: PC_BLUE,
+                child: Row(children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, top: 30.0),
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_new),
+                      iconSize: 40,
+                      color: PC_YELLOW,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ]))),
         body: SingleChildScrollView(
-        child: Column(
-        children: <Widget>[
-          /* X ICON */
-          // TODO Add Icon; Add Screen Link;
-          const Padding(
-              padding: EdgeInsets.only(right: 300, top: 30.0),
+            child: Column(children: <Widget>[
+          // TODO Add Setting Toggles
+          /* PC LOGO */
+          Padding(
+              padding: const EdgeInsets.only(top: 30.0, bottom: 30),
               child: Center(
                 child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    // child: ,
-                ),
-              )
-            ),
-          // TODO Add Setting Toggles
+                    width: 200,
+                    height: 150,
+                    child:
+                        Image.asset('asset/images/panther-central-logo.png')),
+              )),
           /* LOGOUT BUTTON */
           Padding(
             padding: const EdgeInsets.only(top: 30),
@@ -50,9 +64,6 @@ class _SettingsScreenState extends State<SettingsScreen>{
               ),
             ),
           ),
-          ]
-        )
-      )
-    );
+        ])));
   }
 }

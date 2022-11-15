@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/screens/load_funds_screen.dart';
-import 'package:panther_central_ios_app/screens/accounts_screen.dart';
-import 'package:panther_central_ios_app/screens/transactions_screen.dart';
 import 'package:panther_central_ios_app/screens/settings_screen.dart';
 import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
@@ -69,7 +67,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             /* ACCOUNT PAGE */
             SingleChildScrollView(
               child: Column(
-                children: <Widget>[],
+                children: <Widget>[
+                  Icon(Icons.warning_rounded, size: 75, color: PC_YELLOW,),
+                  Text("Under Construction", style: TextStyle(fontWeight: FontWeight.bold, color: PC_YELLOW),),
+
+                ],
               ),
             ),
             /* DASHBOARD PAGE */
@@ -141,14 +143,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
             /*TRANSACTION PAGE*/
             SingleChildScrollView(
               child: Column(
-                children: <Widget>[],
+                children: <Widget>[
+                  Icon(Icons.warning_rounded, size: 75, color: PC_YELLOW,),
+                  Text("Under Construction", style: TextStyle(fontWeight: FontWeight.bold, color: PC_YELLOW),),
+                ],
               ),
             )
           ],
         ),
         /* NAVBAR */
         bottomNavigationBar: SizedBox(
-          height: 100,
+          height: 120,
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(

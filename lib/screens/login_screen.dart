@@ -8,13 +8,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
-
   @override
   Widget build(BuildContext context) {
-
-    const PC_YELLOW = Color.fromARGB(255,255, 185,29);
+    const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
 
     return Scaffold(
@@ -77,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
             /* LOGIN BUTTON */
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child : Container(
+              child: Container(
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
@@ -90,10 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text(
                     'Login',
                     style: TextStyle(color: PC_BLUE, fontSize: 25),
-                    ),
                   ),
                 ),
               ),
+            ),
             const SizedBox(
               height: 130,
             ),

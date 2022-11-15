@@ -22,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: <Widget>[
             /* PC LOGO */
             Padding(
-                padding: const EdgeInsets.only(right: 300, top: 30.0, bottom: 30),
+                padding: const EdgeInsets.only(right: 780, top: 30.0, bottom: 30),
                 child: Center(
                   child: SizedBox(
                       width: 50,
@@ -34,8 +34,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child : Container(
-                height: 75,
-                width: 350,
+                height: 50,
+                width: 250,
                 decoration: BoxDecoration(
                     color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(

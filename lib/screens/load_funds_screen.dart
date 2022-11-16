@@ -39,17 +39,15 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
           child: Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Container(
-              height: 75,
-              width: 75,
-              color: PC_BLUE,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Spacer(),
-                    Text("QUICK RELOAD"),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right:0),
+                height: 75,
+                width: 75,
+                color: PC_BLUE,
+                child: IntrinsicHeight(
+                  child: Stack(
+                    children: [
+                      const Align(child: Text('QUICK RELOAD')),
+                      Positioned(
+                        right: 0,
                         child: IconButton(
                           icon: const Icon(Icons.close_rounded),
                           iconSize: 40,
@@ -59,9 +57,9 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                           },
                         ),
                       ),
-                    )
-                  ]),
-            ),
+                    ],
+                  ),
+                )),
           )),
       body: Center(
         child: Column(

@@ -126,6 +126,9 @@ class _ChoosePaymentScreenState extends State<ChoosePaymentScreen> {
           width: 350,
           height: 75,
           child: Row(children: [
+            const SizedBox(
+              width: 10,
+            ),
             creditCard,
             const SizedBox(
               width: 5,

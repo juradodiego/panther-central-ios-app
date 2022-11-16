@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panther_central_ios_app/custom_widgets/under_construction_widget.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
@@ -34,7 +35,7 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
                     child: Stack(
                       children: [
                         // TODO Add Font Size, Font Color
-                        const Align(child: Text('ADD PAYMENT METHOD')),
+                        const Align(child: Text('ADD PAYMENT METHOD', style: TextStyle(color: PC_YELLOW, fontSize: 30),)),
                         Positioned(
                           right: 10,
                           child: IconButton(
@@ -52,6 +53,8 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
             )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
+              Center(),
+              UnderConstruction(),
           // TODO Add Form Fields
           // TODO Add Add Payment Method Method Button
         ])));

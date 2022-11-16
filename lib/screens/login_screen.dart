@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             //#region PANTHER CENTRAL LOGO
             Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 30),
+                padding: const EdgeInsets.only(top: 40.0, bottom: 30),
                 child: Center(
                   child: SizedBox(
                       width: 200,

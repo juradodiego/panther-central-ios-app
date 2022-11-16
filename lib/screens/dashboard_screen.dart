@@ -132,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             children: const [
                               Text(
                                 'Load More Panther Funds',
-                                style: TextStyle(color: PC_BLUE, fontSize: 20),
+                                style: TextStyle(color: PC_BLUE, fontSize: 22),
                               ),
                               Spacer(),
                               Icon(

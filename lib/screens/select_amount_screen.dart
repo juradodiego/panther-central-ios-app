@@ -26,6 +26,8 @@ class _SelectAmountScreenState extends State<SelectAmountScreen> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(100), // Set this height
             child: Container(
+              height: 75,
+              width: 75,
               color: PC_BLUE,
               child: IntrinsicHeight(
                 child: Stack(

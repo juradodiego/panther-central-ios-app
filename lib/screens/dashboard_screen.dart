@@ -92,7 +92,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 children: <Widget>[
                   //#region PANTHER FUNDS BALANCE DISPLAY
-                  const Text("Panther Funds"),
+
+                  const Text("Panther Funds", style: TextStyle(color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),),
                   Padding(
                     padding: const EdgeInsets.only(top: 0),
                     child: Container(
@@ -111,9 +112,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   //#endregion
                   //#region LOAD PANTHER FUNDS BUTTON
-                  const Text(""),
+                  SizedBox(height: 10,),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 0),
                     child: SizedBox(
                       height: 75,
                       width: 350,
@@ -132,7 +133,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             children: const [
                               Text(
                                 'Load More Panther Funds',
-                                style: TextStyle(color: PC_BLUE, fontSize: 22),
+                                style: TextStyle(color: PC_BLUE, fontSize: 22, fontWeight: FontWeight.bold),
                               ),
                               Spacer(),
                               Icon(
@@ -146,9 +147,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   //#endregion
                   //#region DINING DOLLARS BALANCE DISPLAY
-                  const Text("Dining Dollars"),
+                  SizedBox(height: 15,),
+                  const Text("Dining Dollars", style: TextStyle(color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 0),
                     child: Container(
                       height: 75,
                       width: 350,
@@ -165,11 +167,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   //# endregion
                   //#region OFF-CAMPUS DINING DOLLARS BALANCE DISPLAY
-                  const Text("Off- Campus Dining Dollars"),
+                  SizedBox(height: 15,),
+                  const Text("Off- Campus Dining Dollars", style: TextStyle(color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),),
                   /* OFF-CAMPUS DD ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 0),
                     child: Container(
                       height: 75,
                       width: 350,

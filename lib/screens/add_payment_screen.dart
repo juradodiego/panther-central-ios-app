@@ -24,30 +24,40 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
         backgroundColor: PC_BLUE,
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(100), // Set this height
-            child: Container(
-                color: PC_BLUE,
-                child: Row(children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 30.0),
-                    child: IconButton(
-                      icon: const Icon(Icons.close_rounded),
-                      iconSize: 40,
-                      color: PC_YELLOW,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                  height: 75,
+                  width: 75,
+                  color: PC_BLUE,
+                  child: IntrinsicHeight(
+                    child: Stack(
+                      children: [
+                        // TODO Add Font Size, Font Color
+                        const Align(child: Text('ADD PAYMENT METHOD')),
+                        Positioned(
+                          right: 10,
+                          child: IconButton(
+                            icon: const Icon(Icons.close_rounded),
+                            iconSize: 40,
+                            color: PC_YELLOW,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Title(color: Colors.white, child: const Text("ADD PAYMENT METHOD")),
-                ]))),
-        body: SingleChildScrollView(child: Column(children: <Widget>[
+                  )),
+            )),
+        body: SingleChildScrollView(
+            child: Column(children: <Widget>[
           // TODO Add Form Fields
           // TODO Add Add Payment Method Method Button
         ])));
   }
 
-  void addPaymentMethod(UserViewModel user, CustomCard card){
+  void addPaymentMethod(UserViewModel user, CustomCard card) {
     user.cards.add(card);
   }
-
 }

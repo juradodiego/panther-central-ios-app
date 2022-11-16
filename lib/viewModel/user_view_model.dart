@@ -1,6 +1,6 @@
 import 'package:panther_central_ios_app/models/user_model.dart';
 import 'package:panther_central_ios_app/models/transaction_model.dart';
-import 'package:panther_central_ios_app/models/card_model.dart';
+import 'package:panther_central_ios_app/models/custom_card_model.dart';
 
 class UserViewModel {
 
@@ -28,7 +28,7 @@ class UserViewModel {
     return user.transactions;
   }
 
-  List<Card> get cards {
+  List<CustomCard> get cards {
     return user.cards;
   }
 }

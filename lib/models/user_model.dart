@@ -1,5 +1,5 @@
 import 'package:panther_central_ios_app/models/transaction_model.dart';
-import 'package:panther_central_ios_app/models/card_model.dart';
+import 'package:panther_central_ios_app/models/custom_card_model.dart';
 
 class User {
   final String firstName;
@@ -7,7 +7,7 @@ class User {
   final String role;
   final Map<String, double> accounts;
   final List<Transaction> transactions;
-  final List<Card> cards;
+  final List<CustomCard> cards;
 
   User(
       {required this.firstName,
@@ -24,8 +24,8 @@ class User {
     List<Transaction> transactionList = transactionsJson
         .map((transactionsJson) => Transaction.fromJson(transactionsJson))
         .toList();
-    List<Card> cardList =
-        cardsJson.map((cardsJson) => Card.fromJson(cardsJson)).toList();
+    List<CustomCard> cardList =
+        cardsJson.map((cardsJson) => CustomCard.fromJson(cardsJson)).toList();
 
     return User(
         firstName: json["FirstName"],

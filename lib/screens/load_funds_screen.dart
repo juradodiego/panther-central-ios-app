@@ -47,7 +47,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                     children: [
                       const Align(child: Text('QUICK RELOAD')),
                       Positioned(
-                        right: 0,
+                        right: 10,
                         child: IconButton(
                           icon: const Icon(Icons.close_rounded),
                           iconSize: 40,

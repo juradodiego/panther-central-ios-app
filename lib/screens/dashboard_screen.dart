@@ -122,7 +122,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-
+                  Text(""),
                   /* LOAD FUNDS BUTTON */
                   Padding(
                     padding: const EdgeInsets.only(top: 15),

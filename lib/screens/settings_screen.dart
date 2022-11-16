@@ -28,7 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               // TODO Add Font Size, Font Color
               const Align(child: Text('SETTINGS')),
           Positioned(
-            right: 10,
+            left: 10,
             child: IconButton(
               icon: const Icon(Icons.arrow_forward_ios),
               iconSize: 40,

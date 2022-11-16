@@ -104,7 +104,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Center(
                         child: Text(
                           r'$' + user!.accounts["Panther Funds"].toString(),
-                          style: const TextStyle(fontSize: 25),
+                          style: const TextStyle(fontSize: 40),
                         ),
                       ),
                     ),
@@ -132,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             children: const [
                               Text(
                                 'Load More Panther Funds',
-                                style: TextStyle(color: PC_BLUE, fontSize: 25),
+                                style: TextStyle(color: PC_BLUE, fontSize: 20),
                               ),
                               Spacer(),
                               Icon(
@@ -158,7 +158,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Center(
                         child: Text(
                           r'$' + user!.accounts["Dining Dollars"].toString(),
-                          style: const TextStyle(fontSize: 25),
+                          style: const TextStyle(fontSize: 40),
                         ),
                       ),
                     ),
@@ -179,7 +179,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Center(
                         child: Text(
                           r'$' + user!.accounts["OC Dining Dollars"].toString(),
-                          style: const TextStyle(fontSize: 25),
+                          style: const TextStyle(fontSize: 40),
                         ),
                       ),
                     ),

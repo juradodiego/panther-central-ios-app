@@ -45,6 +45,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                 child: IntrinsicHeight(
                   child: Stack(
                     children: [
+                      // TODO Add Font Size, Font Color
                       const Align(child: Text('QUICK RELOAD')),
                       Positioned(
                         right: 10,

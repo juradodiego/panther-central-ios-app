@@ -22,19 +22,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 height: 75,
                 width: 75,
                 color: PC_BLUE,
-                child: Row(children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new),
-                      iconSize: 40,
-                      color: PC_YELLOW,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ]),
+                child: IntrinsicHeight(
+              child: Stack(
+              children: [
+              // TODO Add Font Size, Font Color
+              const Align(child: Text('SETTINGS')),
+          Positioned(
+            right: 10,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_forward_ios),
+              iconSize: 40,
+              color: PC_YELLOW,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          ],
+        ),
+    ),
               ),
             )),
         body: SingleChildScrollView(

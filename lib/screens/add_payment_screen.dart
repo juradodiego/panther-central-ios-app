@@ -35,7 +35,7 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
                     child: Stack(
                       children: [
                         // TODO Add Font Size, Font Color
-                        const Align(child: Text('ADD PAYMENT METHOD', style: TextStyle(color: PC_YELLOW, fontSize: 24),)),
+                        const Align(child: Text('ADD PAYMENT METHOD', style: TextStyle(color: PC_YELLOW, fontSize: 23),)),
                         Positioned(
                           right: 10,
                           child: IconButton(

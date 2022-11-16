@@ -1,0 +1,56 @@
+{
+  "FirstName": "Diego",
+  "LastName" : "Jurado",
+  "Role" : "student",
+  "Accounts" : {
+    "Panther Funds" :  12.34,
+    "Dining Dollars" :  56.78,
+    "OC Dining Dollars" :  90.10,
+    "Addtl. Dining Dollars" : 11.12,
+    "Bonus Bucks" : 13.14
+  },
+  "Transactions" : [
+    {
+      "Date" : "2022-11-15 23:32:51.375",
+      "Description" : "Transaction One",
+      "Account" : "Panther Funds",
+      "Amount" : "$12.34"
+    },
+    {
+      "Date" : "2022-12-15 23:32:51.375",
+      "Description" : "Transaction Two",
+      "Account" : "Dining Dollars",
+      "Amount" : "$56.78"
+    }
+  ],
+  "Cards" : [
+    {
+      "Name": "Mastercard",
+      "NameOnCard" : "Diego Jurado",
+      "Number" : 1234567812345678,
+      "Exp" : "08/25",
+      "CVV" : 123,
+      "Billing" : {
+        "LineOne" : "123 Mulberry St.",
+        "LineTwo" : "",
+        "City" : "Pittsburgh",
+        "State" : "PA",
+        "ZIP" : "15213"
+      }
+    },
+    {
+      "Name": "Visa",
+      "NameOnCard" : "Diego Jurado",
+      "Number" : 5678123456781234,
+      "Exp" : "08/25",
+      "CVV" : 123,
+      "Billing" : {
+        "LineOne" : "123 Mulberry St.",
+        "LineTwo" : "",
+        "City" : "Pittsburgh",
+        "State" : "PA",
+        "ZIP" : "15213"
+      }
+    }
+  ]
+}

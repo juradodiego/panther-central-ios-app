@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:panther_central_ios_app/models/address_model.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/models/transaction_model.dart';
 import 'package:panther_central_ios_app/models/user_model.dart';
-import 'package:panther_central_ios_app/service/web_service.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
+
+
+
 
 class UsersListViewModel {
   Map<String, UserViewModel> users = <String, UserViewModel>{};
 
   UserViewModel? fetchUser(String username) {
     generateUsers();
-    return users[username];
+    return users['diegojurado'];
 
   }
 

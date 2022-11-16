@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:panther_central_ios_app/screens/add_payment_screen.dart';
+import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
-import 'package:panther_central_ios_app/viewModel/users_view_model.dart';
 
 class SelectAmountScreen extends StatefulWidget {
+  final UserViewModel? user;
+
+  const SelectAmountScreen(this.user);
+
   @override
-  _SelectAmountScreenState createState() => _SelectAmountScreenState();
+  _SelectAmountScreenState createState() {
+    return _SelectAmountScreenState();
+  }
 }
 
 class _SelectAmountScreenState extends State<SelectAmountScreen> {
@@ -13,6 +20,7 @@ class _SelectAmountScreenState extends State<SelectAmountScreen> {
   Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    final UserViewModel? user = widget.user;
 
     return Scaffold(
         backgroundColor: PC_BLUE,
@@ -33,7 +41,31 @@ class _SelectAmountScreenState extends State<SelectAmountScreen> {
                       },
                     ),
                   ),
+                  Title(color: Colors.white, child: const Text("CHOOSE PAYMENT")),
                 ]))),
-        body: SingleChildScrollView(child: Column(children: <Widget>[])));
+        body: SingleChildScrollView(child: Column(children: <Widget>[
+          // TODO List of Payment Methods
+          // TODO Add Payment Method Link
+          // TODO When Payment Method is Added the Screen Updates
+          Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (_) => AddPaymentScreen(user)));
+                },
+                child: const Text(
+                  'ADD PAYMENT METHOD',
+                  style: TextStyle(color: PC_BLUE, fontSize: 25),
+                ),
+              ),
+            ),
+          ),
+        ])));
   }
 }

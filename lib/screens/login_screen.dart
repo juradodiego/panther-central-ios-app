@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:panther_central_ios_app/main.dart';
 import 'package:panther_central_ios_app/screens/dashboard_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
@@ -23,8 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
-    const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    const Color PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
+    const Color PC_BLUE = Color.fromARGB(255, 0, 53, 148);
 
     return Scaffold(
       backgroundColor: PC_BLUE,
@@ -39,10 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 200,
                       height: 150,
                       child:
-                          Image.asset('asset/images/panther-central-logo.png')),
+                          Image.asset('assets/images/panther-central-logo.png')),
                 )),
             /* USERNAME INPUT */
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: usernameController,
@@ -59,8 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             /* PASSWORD INPUT */
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
                 controller: passwordController,
                 obscureText: true,
@@ -87,32 +90,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             /* LOGIN BUTTON */
             Padding(
-              padding:  const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               child: Container(
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
                     color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
-                  onPressed: () async {
-                    await showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          authorizeLogin(usernameController.text, passwordController.text);
-                          return  AlertDialog(
-                            content: const Text(
-                                'Invalid Login Attempt, Try Again'),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        }
-                    );
+                  onPressed: () {
+                    authorizeLogin(
+                        usernameController.text, passwordController.text);
                   },
                   child: const Text(
                     'Login',
@@ -139,6 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (user != null) {
       Navigator.push(
           context, MaterialPageRoute(builder: (_) => DashboardScreen(user)));
+    } else {
+      // TODO Add Popup notification Error
     }
     // Move to Dashboard Page
   }

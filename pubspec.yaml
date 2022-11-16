@@ -67,7 +67,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - asset/images/panther-central-logo.png
+    - assets/images/panther-central-logo.png
+    - assets/users/user_one.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

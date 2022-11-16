@@ -48,7 +48,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     width: 200,
                     height: 150,
                     child:
-                        Image.asset('asset/images/panther-central-logo.png')),
+                        Image.asset('assets/images/panther-central-logo.png')),
               )),
           /* LOGOUT BUTTON */
           Padding(

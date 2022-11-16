@@ -12,11 +12,12 @@ class DashboardScreen extends StatefulWidget {
   const DashboardScreen(this.user);
 
   @override
-  _DashboardScreenState createState() => _DashboardScreenState();
+  _DashboardScreenState createState() {
+    return _DashboardScreenState();
+  }
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-
   int _selectedIndex = 1;
 
   PageController pageController = PageController(initialPage: 1);
@@ -30,9 +31,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
-    const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
-    final UserViewModel? USER = widget.user;
+    const Color PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
+    const Color PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    final UserViewModel? user = widget.user;
 
     // TODO Fix iOS pixel measurements to fit snug
 
@@ -40,7 +41,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         backgroundColor: PC_BLUE,
         /* APPBAR: PC LOGO + SETTINGS BUTTON */
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100), // Set this height
+          preferredSize: const Size.fromHeight(100), // Set this height
           child: Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Container(
@@ -49,19 +50,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 children: <Widget>[
                   /* PC LOGO */
                   Padding(
-                    padding: const EdgeInsets.only(left:10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: SizedBox(
                         width: 75,
                         height: 75,
                         child: Image.asset(
-                            'asset/images/panther-central-logo.png')),
+                            'assets/images/panther-central-logo.png')),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   /* SETTINGS BUTTON */
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
-                      icon: Icon(Icons.settings),
+                      icon: const Icon(Icons.settings),
                       iconSize: 60,
                       color: PC_YELLOW,
                       onPressed: () {
@@ -83,7 +84,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             //#region ACCOUNTS SCREEN
             SingleChildScrollView(
               child: Column(
-                children: <Widget>[
+                children: const <Widget>[
                   Icon(
                     Icons.warning_rounded,
                     size: 75,
@@ -103,6 +104,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 children: <Widget>[
                   /* PANTHER FUNDS ACCOUNT */
+                  Text("Panther Funds"),
                   // TODO Display Account Balance
                   Padding(
                     padding: const EdgeInsets.only(top: 0),
@@ -112,33 +114,48 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
-                      child: Text(USER!.accounts["Panther Funds"].toString()),
-                    ),
-                  ),
-                  /* LOAD FUNDS BUTTON */
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Container(
-                      height: 75,
-                      width: 350,
-                      decoration: BoxDecoration(
-                          color: PC_YELLOW,
-                          borderRadius: BorderRadius.circular(20)),
-                      // TODO Change from TextButton -> ElevatedButton
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => LoadFundsScreen(USER)));
-                        },
-                        child: const Text(
-                          'Load Funds',
-                          style: TextStyle(color: PC_BLUE, fontSize: 25),
+                      child: Center(
+                        child: Text(
+                          r'$' + user!.accounts["Panther Funds"].toString(),
+                          style: const TextStyle(fontSize: 25),
                         ),
                       ),
                     ),
                   ),
+
+                  /* LOAD FUNDS BUTTON */
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: SizedBox(
+                      height: 75,
+                      width: 350,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: PC_YELLOW,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20))),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => LoadFundsScreen(user)));
+                          },
+                          child: Row(
+                            children: const [
+                              Text(
+                                'Load More Panther Funds',
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 25,
+                              )
+                            ],
+                          )),
+                    ),
+                  ),
+                  Text("Dining Dollars"),
                   /* DD ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
@@ -149,8 +166,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          r'$' + user!.accounts["Dining Dollars"].toString(),
+                          style: const TextStyle(fontSize: 25),
+                        ),
+                      ),
                     ),
                   ),
+                  Text("Off- Campus Dining Dollars"),
                   /* OFF-CAMPUS DD ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
@@ -161,6 +185,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          r'$' + user!.accounts["OC Dining Dollars"].toString(),
+                          style: const TextStyle(fontSize: 25),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -170,7 +200,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             //#region TRANSACTIONS SCREEN
             SingleChildScrollView(
               child: Column(
-                children: <Widget>[
+                children: const <Widget>[
                   Icon(
                     Icons.warning_rounded,
                     size: 75,

@@ -25,29 +25,31 @@ class _SelectAmountScreenState extends State<SelectAmountScreen> {
         /* GO BACK ICON BUTTON */
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(100), // Set this height
-            child: Container(
-              height: 75,
-              width: 75,
-              color: PC_BLUE,
-              child: IntrinsicHeight(
-                child: Stack(
-                  children: [
-                    // TODO Add Font Size, Font Color
-                    const Align(child: Text('CHOOSE PAYMENT')),
-                    Positioned(
-                      left: 10,
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_back_ios),
-                        iconSize: 40,
-                        color: PC_YELLOW,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                  height: 75,
+                  width: 75,
+                  color: PC_BLUE,
+                  child: IntrinsicHeight(
+                    child: Stack(
+                      children: [
+                        // TODO Add Font Size, Font Color
+                        const Align(child: Text('CHOOSE PAYMENT')),
+                        Positioned(
+                          left: 10,
+                          child: IconButton(
+                            icon: const Icon(Icons.arrow_back_ios),
+                            iconSize: 40,
+                            color: PC_YELLOW,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
+                  )),
             )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[

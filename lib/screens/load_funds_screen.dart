@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/screens/dashboard_screen.dart';
-import 'package:panther_central_ios_app/screens/select_amount_screen.dart';
-import 'package:panther_central_ios_app/screens/select_payment_screen.dart';
+import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
-import 'package:panther_central_ios_app/models/address_model.dart';
 
 class LoadFundsScreen extends StatefulWidget {
   final UserViewModel? user;
@@ -18,10 +16,9 @@ class LoadFundsScreen extends StatefulWidget {
 }
 
 class _LoadFundsScreenState extends State<LoadFundsScreen> {
-  List<String> items = <String>[r'$5.00', r'$10.00', r'$25.00', r'$50.00'];
-  List<String> paymentMethods = <String>['Select Payment Method'];
-  String? selectedItem = r'$5.00';
-  String? paymentMethod = 'Select Payment Method';
+  List<String> amounts = <String>[r'$5.00', r'$10.00', r'$25.00', r'$50.00'];
+  String? selectedAmount = r'$5.00';
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +26,9 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
     const Color PC_BLUE = Color.fromARGB(255, 0, 53, 148);
     final UserViewModel? user = widget.user;
 
-    getPaymentMethods(user);
-
     return Scaffold(
       backgroundColor: PC_BLUE,
-      /* GO BACK ICON BUTTON */
+      /* APPBAR: BACK OUT BUTTON + PAGE TITLE */
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100), // Set this height
           child: Padding(
@@ -62,6 +57,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                   ),
                 )),
           )),
+      /* BODY: CHOOSE PAYMENT BUTTON + SELECT AMOUNT DROPDOWN + CONFIRM PURCHASE BUTTON */
       body: Center(
         child: Column(
           children: <Widget>[
@@ -75,12 +71,12 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   child: ElevatedButton(
-                    child: rowConstructor(user, null),
+                    child: paymentMethodRow(user, null),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => SelectAmountScreen(user)));
+                              builder: (_) => ChoosePaymentScreen(user)));
                     },
                   )),
             ),
@@ -95,17 +91,17 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                     borderRadius: BorderRadius.circular(20)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: selectedItem,
-                    items: items
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
+                    value: selectedAmount,
+                    items: amounts
+                        .map((amount) => DropdownMenuItem<String>(
+                              value: amount,
                               child: Padding(
                                   padding: const EdgeInsets.only(left: 15),
-                                  child: Text(item,
-                                      style: TextStyle(fontSize: 24))),
+                                  child: Text(amount,
+                                      style: const TextStyle(fontSize: 24))),
                             ))
                         .toList(),
-                    onChanged: (item) => setState(() => selectedItem = item),
+                    onChanged: (item) => setState(() => selectedAmount = item),
                     icon: const Padding(
                         padding: EdgeInsets.only(right: 15),
                         child: Icon(Icons.arrow_drop_down)),
@@ -122,7 +118,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                     color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
                   onPressed: () {
-                    confirmPurchase(selectedItem!, user);
+                    confirmPurchase(selectedAmount!, user);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -141,26 +137,12 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
     );
   }
 
-  void getPaymentMethods(UserViewModel? user) {
-    List<CustomCard> cards = user!.cards;
-
-    if (paymentMethods.length != cards.length + 1) {
-      for (final c in cards) {
-        var n = c.number
-            .toString()
-            .substring(16 - 4); // Get Last 4 digits from card
-        paymentMethods.add(
-            "Account ending in x$n"); // Append Last 4 digits to String "Card ending in x"; Append String to List
-      }
-    }
-  }
-
   void confirmPurchase(String amount, UserViewModel? user) {
     user!.accounts["Panther Funds"] = (user!.accounts["Panther Funds"]! +
         double.parse(amount.substring(1)))!; // get current PF amount
   }
 
-  Row rowConstructor(UserViewModel? user, CustomCard? card) {
+  Row paymentMethodRow(UserViewModel? user, CustomCard? card) {
     const creditCard = Icon(Icons.credit_card_rounded);
     const arrowIcon = Icon(Icons.arrow_forward_ios);
     CustomCard firstCard = user!.cards.first;
@@ -182,7 +164,6 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         ],
       );
     } else if (card == null && card == firstCard) {
-      // Add payment method
       return Row(
         children: const [
           Text(
@@ -194,15 +175,14 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         ],
       );
     } else {
-      // Default Payment
+      String cardName = firstCard.name;
       String lastFour = firstCard.number
           .toString()
           .substring(firstCard.number.toString().length - 4);
-      String cardName = firstCard.name;
       String compound = "$cardName ending in x$lastFour";
       return Row(children: [
         creditCard,
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
         Text(

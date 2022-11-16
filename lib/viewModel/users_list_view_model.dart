@@ -13,8 +13,9 @@ class UsersListViewModel {
   Map<String, UserViewModel> users = <String, UserViewModel>{};
 
   UserViewModel? fetchUser(String username) {
+    String normalizedUsername = username.toLowerCase();
     generateUsers();
-    return users['diegojurado'];
+    return users[normalizedUsername];
 
   }
 

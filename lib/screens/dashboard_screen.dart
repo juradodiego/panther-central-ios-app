@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:panther_central_ios_app/custom_widgets/under_construction_widget.dart';
 import 'package:panther_central_ios_app/screens/load_funds_screen.dart';
 import 'package:panther_central_ios_app/screens/settings_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
-import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
-
-import 'package:provider/provider.dart';
 
 class DashboardScreen extends StatefulWidget {
   final UserViewModel? user;
@@ -18,9 +17,9 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _selectedIndex = 1;
-
+  //#region PAGE CONTROLLER
   PageController pageController = PageController(initialPage: 1);
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -28,18 +27,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
     pageController.jumpToPage(_selectedIndex);
   }
-
+  //#endregion
   @override
   Widget build(BuildContext context) {
+    // Panther Central Theme Colors
     const Color PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const Color PC_BLUE = Color.fromARGB(255, 0, 53, 148);
-    final UserViewModel? user = widget.user;
-
-    // TODO Fix iOS pixel measurements to fit snug
+    final UserViewModel? user = widget.user; // UserViewModel for getting and setting data
 
     return Scaffold(
         backgroundColor: PC_BLUE,
-        /* APPBAR: PC LOGO + SETTINGS BUTTON */
+        /* APPBAR: PANTHER CENTRAL LOGO + SETTINGS BUTTON */
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100), // Set this height
           child: Padding(
@@ -48,7 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               color: PC_BLUE,
               child: Row(
                 children: <Widget>[
-                  /* PC LOGO */
+                  //#region PANTHER CENTRAL LOGO
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: SizedBox(
@@ -57,8 +55,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         child: Image.asset(
                             'assets/images/panther-central-logo.png')),
                   ),
+                  //#endregion
                   const Spacer(),
-                  /* SETTINGS BUTTON */
+                  //#region SETTINGS SCREEN BUTTON
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
@@ -73,39 +72,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       },
                     ),
                   ),
+                  //#endregion
                 ],
               ),
             ),
           ),
         ),
+        /* BODY: DISPLAY FOR DASHBOARD, ACCOUNTS, TRANSACTIONS */
         body: PageView(
           controller: pageController,
           children: [
             //#region ACCOUNTS SCREEN
             SingleChildScrollView(
-              child: Column(
-                children: const <Widget>[
-                  Icon(
-                    Icons.warning_rounded,
-                    size: 75,
-                    color: PC_YELLOW,
-                  ),
-                  Text(
-                    "Under Construction",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: PC_YELLOW),
-                  ),
-                ],
-              ),
+              child: UnderConstruction(),
             ),
             //#endregion
             //#region DASHBOARD SCREEN
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  /* PANTHER FUNDS ACCOUNT */
-                  Text("Panther Funds"),
-                  // TODO Display Account Balance
+                  //#region PANTHER FUNDS BALANCE DISPLAY
+                  const Text("Panther Funds"),
                   Padding(
                     padding: const EdgeInsets.only(top: 0),
                     child: Container(
@@ -122,8 +109,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-                  Text(""),
-                  /* LOAD FUNDS BUTTON */
+                  //#endregion
+                  //#region LOAD PANTHER FUNDS BUTTON
+                  const Text(""),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: SizedBox(
@@ -144,20 +132,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             children: const [
                               Text(
                                 'Load More Panther Funds',
-                                style: TextStyle(color: Colors.white, fontSize: 20),
+                                style: TextStyle(color: PC_BLUE, fontSize: 25),
                               ),
                               Spacer(),
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 25,
+                                color: PC_BLUE,
                               )
                             ],
                           )),
                     ),
                   ),
-                  Text("Dining Dollars"),
-                  /* DD ACCOUNT */
-                  // TODO Display Account Balance
+                  //#endregion
+                  //#region DINING DOLLARS BALANCE DISPLAY
+                  const Text("Dining Dollars"),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
@@ -174,7 +163,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-                  Text("Off- Campus Dining Dollars"),
+                  //# endregion
+                  //#region OFF-CAMPUS DINING DOLLARS BALANCE DISPLAY
+                  const Text("Off- Campus Dining Dollars"),
                   /* OFF-CAMPUS DD ACCOUNT */
                   // TODO Display Account Balance
                   Padding(
@@ -193,32 +184,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
+                  //#endregion
                 ],
               ),
             ),
             //#endregion
             //#region TRANSACTIONS SCREEN
             SingleChildScrollView(
-              child: Column(
-                children: const <Widget>[
-                  Icon(
-                    Icons.warning_rounded,
-                    size: 75,
-                    color: PC_YELLOW,
-                  ),
-                  Text(
-                    "Under Construction",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: PC_YELLOW),
-                  ),
-                ],
-              ),
+              child: UnderConstruction(),
             )
             //#endregion
           ],
         ),
-
-        /* NAVBAR */
+        /* NAVBAR: NAVIGATION BUTTONS BETWEEN DASHBOARD, ACCOUNTS, TRANSACTIONS */
         bottomNavigationBar: SizedBox(
           height: 120,
           child: BottomNavigationBar(

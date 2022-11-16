@@ -41,7 +41,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                   child: Stack(
                     children: [
                       // TODO Add Font Size, Font Color
-                      const Align(child: Text('QUICK RELOAD', style: TextStyle(color: PC_YELLOW, fontSize: 23),)),
+                      const Align(child: Text('QUICK RELOAD', style: TextStyle(color: PC_YELLOW, fontSize: 23,),)),
                       Positioned(
                         right: 10,
                         child: IconButton(

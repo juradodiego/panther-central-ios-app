@@ -42,7 +42,7 @@ class _ChoosePaymentScreenState extends State<ChoosePaymentScreen> {
                   child: Stack(
                     children: [
                       // TODO Add Font Size, Font Color
-                      const Align(child: Text('CHOOSE PAYMENT', style: TextStyle(color: PC_YELLOW, fontSize: 25),)),
+                      const Align(child: Text('CHOOSE PAYMENT', style: TextStyle(color: PC_YELLOW, fontSize: 24),)),
                       Positioned(
                         left: 10,
                         child: IconButton(

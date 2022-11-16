@@ -29,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Stack(
                     children: [
                       // TODO Add Font Size, Font Color
-                      const Align(child: Text('SETTINGS', style: TextStyle(color: PC_YELLOW, fontSize: 25),)),
+                      const Align(child: Text('SETTINGS', style: TextStyle(color: PC_YELLOW, fontSize: 24),)),
                       Positioned(
                         left: 10,
                         child: IconButton(

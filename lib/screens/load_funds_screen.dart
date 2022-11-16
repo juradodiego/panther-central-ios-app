@@ -49,7 +49,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                     Text("QUICK RELOAD"),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right:0),
                         child: IconButton(
                           icon: const Icon(Icons.close_rounded),
                           iconSize: 40,

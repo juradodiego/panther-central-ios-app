@@ -30,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Positioned(
             left: 10,
             child: IconButton(
-              icon: const Icon(Icons.arrow_forward_ios),
+              icon: const Icon(Icons.arrow_back_ios),
               iconSize: 40,
               color: PC_YELLOW,
               onPressed: () {

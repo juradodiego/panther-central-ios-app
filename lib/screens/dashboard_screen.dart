@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/screens/load_funds_screen.dart';
 import 'package:panther_central_ios_app/screens/settings_screen.dart';
+import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
 import 'package:provider/provider.dart';
 
 class DashboardScreen extends StatefulWidget {
+  final UserViewModel? user;
+
+  const DashboardScreen(this.user);
+
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
   int _selectedIndex = 1;
 
   PageController pageController = PageController(initialPage: 1);
@@ -26,6 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    final UserViewModel? USER = widget.user;
 
     // TODO Fix iOS pixel measurements to fit snug
 
@@ -73,7 +80,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         body: PageView(
           controller: pageController,
           children: [
-            /* ACCOUNT PAGE */
+            //#region ACCOUNTS SCREEN
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -90,7 +97,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
-            /* DASHBOARD PAGE */
+            //#endregion
+            //#region DASHBOARD SCREEN
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -104,6 +112,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
+                      child: Text(USER!.accounts["Panther Funds"].toString()),
                     ),
                   ),
                   /* LOAD FUNDS BUTTON */
@@ -121,7 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => LoadFundsScreen()));
+                                  builder: (_) => LoadFundsScreen(USER)));
                         },
                         child: const Text(
                           'Load Funds',
@@ -157,7 +166,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
-            /*TRANSACTION PAGE*/
+            //#endregion
+            //#region TRANSACTIONS SCREEN
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -174,8 +184,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             )
+            //#endregion
           ],
         ),
+
         /* NAVBAR */
         bottomNavigationBar: SizedBox(
           height: 120,

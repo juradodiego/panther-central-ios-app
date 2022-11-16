@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/main.dart';
 import 'package:panther_central_ios_app/screens/dashboard_screen.dart';
+import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
+import 'package:panther_central_ios_app/viewModel/users_list_view_model.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,6 +10,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
@@ -29,10 +42,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           Image.asset('asset/images/panther-central-logo.png')),
                 )),
             /* USERNAME INPUT */
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                decoration: InputDecoration(
+                controller: usernameController,
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
@@ -44,12 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             /* PASSWORD INPUT */
-            const Padding(
+            Padding(
               padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
+                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
@@ -72,16 +87,32 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             /* LOGIN BUTTON */
             Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding:  const EdgeInsets.only(top: 30),
               child: Container(
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
                     color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => DashboardScreen()));
+                  onPressed: () async {
+                    await showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          authorizeLogin(usernameController.text, passwordController.text);
+                          return  AlertDialog(
+                            content: const Text(
+                                'Invalid Login Attempt, Try Again'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          );
+                        }
+                    );
                   },
                   child: const Text(
                     'Login',
@@ -98,5 +129,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void authorizeLogin(String username, String password) {
+    UsersListViewModel ULVM = UsersListViewModel();
+    UserViewModel? user = ULVM.fetchUser(username);
+
+    // TODO Add Password Authentication
+    if (user != null) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => DashboardScreen(user)));
+    }
+    // Move to Dashboard Page
   }
 }

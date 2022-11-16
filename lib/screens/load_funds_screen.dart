@@ -5,6 +5,10 @@ import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 import 'package:panther_central_ios_app/models/address_model.dart';
 
 class LoadFundsScreen extends StatefulWidget {
+  final UserViewModel? user;
+
+  const LoadFundsScreen(this.user);
+
   @override
   _LoadFundsScreenState createState() => _LoadFundsScreenState();
 }
@@ -22,8 +26,9 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
   Widget build(BuildContext context) {
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    final UserViewModel? USER = widget.user;
 
-    getPaymentMethods();
+    getPaymentMethods(USER);
 
     return Scaffold(
       backgroundColor: PC_BLUE,
@@ -118,36 +123,9 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
     );
   }
 
-  void getPaymentMethods() {
-    // userViewModel.cards  // get Cards from UserViewModel
-    // Iterate through Cards
-    final cards = <CustomCard>[];
-    final card_one = CustomCard(
-        name: "Citi",
-        nameOnCard: "James Polk",
-        number: 1234567812345678,
-        exp: "08/25",
-        cvv: 123,
-        billing: Address(
-            lineOne: "123 Mulberry St.",
-            lineTwo: "",
-            city: "Pittsburgh",
-            state: "PA",
-            zip: "12345"));
-    final card_two = CustomCard(
-        name: "Citi",
-        nameOnCard: "James Polk",
-        number: 1234567812341234,
-        exp: "08/25",
-        cvv: 123,
-        billing: Address(
-            lineOne: "123 Mulberry St.",
-            lineTwo: "",
-            city: "Pittsburgh",
-            state: "PA",
-            zip: "12345"));
-    cards.add(card_one);
-    cards.add(card_two);
+  void getPaymentMethods(UserViewModel? user) {
+
+    List<CustomCard> cards = user!.cards;
 
     if (paymentMethods.length != cards.length + 1){
       for (final c in cards){

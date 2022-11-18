@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panther_central_ios_app/custom_widgets/under_construction_widget.dart';
 import 'package:panther_central_ios_app/screens/login_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -9,11 +10,13 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    // Panther Central Theme Colors
     const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
     const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
 
     return Scaffold(
         backgroundColor: PC_BLUE,
+        /* APPBAR: BACK OUT BUTTON + PAGE TITLE*/
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(100), // Set this height
             child: Padding(
@@ -22,35 +25,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 height: 75,
                 width: 75,
                 color: PC_BLUE,
-                child: Row(children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new),
-                      iconSize: 40,
-                      color: PC_YELLOW,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+                child: IntrinsicHeight(
+                  child: Stack(
+                    children: [
+                      // TODO Add Font Size, Font Color
+                      const Align(child: Text('SETTINGS', style: TextStyle(color: PC_YELLOW, fontSize: 23,),)),
+                      Positioned(
+                        left: 10,
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_back_ios),
+                          iconSize: 40,
+                          color: PC_YELLOW,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ]),
+                ),
               ),
             )),
+        /* BODY: SETTING TOGGLES + LOGOUT BUTTON */
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
+          const Center(),
           // TODO Add Setting Toggles
-          /* PC LOGO */
-          Padding(
-              padding: const EdgeInsets.only(top: 30.0, bottom: 30),
-              child: Center(
-                child: SizedBox(
-                    width: 200,
-                    height: 150,
-                    child:
-                        Image.asset('asset/images/panther-central-logo.png')),
-              )),
-          /* LOGOUT BUTTON */
+          UnderConstruction(),
+          //#region LOGOUT BUTTON
           Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Container(
@@ -70,6 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ),
+          //#endregion
         ])));
   }
 }

@@ -25,7 +25,7 @@ class UsersListViewModel {
     userOneAccount['Panther Funds'] = 13.14;
     userOneAccount['Dining Dollars'] = 12.34;
     userOneAccount['OC Dining Dollars'] = 56.78;
-    userOneAccount['Addtl. Dining Dollars'] = 90.10;
+    userOneAccount['Add. Dining Dollars'] = 90.10;
     userOneAccount['Bonus Bucks'] = 11.12;
     //#endregion
 

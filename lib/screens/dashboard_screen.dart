@@ -21,6 +21,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   PageController pageController = PageController(initialPage: 1);
   int _selectedIndex = 1;
 
+  void _onPageChange(int page){
+    setState(() {
+      _selectedIndex = page;
+    });
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -81,6 +87,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         /* BODY: DISPLAY FOR DASHBOARD, ACCOUNTS, TRANSACTIONS */
         body: PageView(
           controller: pageController,
+          onPageChanged: _onPageChange,
           children: [
             //#region ACCOUNTS SCREEN
             SingleChildScrollView(
@@ -191,7 +198,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             //#endregion
-
             //#region DASHBOARD SCREEN
             SingleChildScrollView(
               child: Column(

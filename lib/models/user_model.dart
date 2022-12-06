@@ -8,6 +8,7 @@ class User {
   final Map<String, double> accounts;
   final List<Transaction> transactions;
   final List<CustomCard> cards;
+  final String email;
 
   User(
       {required this.firstName,
@@ -15,7 +16,8 @@ class User {
       required this.role,
       required this.accounts,
       required this.transactions,
-      required this.cards});
+      required this.cards,
+      required this.email});
 
   factory User.fromJson(Map<String, dynamic> json) {
     var transactionsJson = json["Transactions"] as List;
@@ -33,7 +35,8 @@ class User {
         role: json["Role"],
         accounts: json["Accounts"],
         transactions: transactionList,
-        cards: cardList);
+        cards: cardList,
+        email:json["Email"]);
   }
 
   @override

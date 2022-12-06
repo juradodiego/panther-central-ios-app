@@ -68,7 +68,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => SettingsScreen()));
+                                builder: (_) => SettingsScreen(user)));
                       },
                     ),
                   ),
@@ -223,6 +223,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             backgroundColor: PC_YELLOW,
             iconSize: 40.0,
           ),
-        ));
+        )
+      );
   }
 }

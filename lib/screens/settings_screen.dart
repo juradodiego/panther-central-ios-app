@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/screens/login_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
@@ -21,21 +23,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // Extra functionalities for the Allow Parent button, as we want a popup
   // textbox for user to input an email
-  String onChangeParent(bool? value) {
+  onChangeParent(bool? value) {
     setState(() {
       allowParent = value!;
     });
     if (value!) {
-      openDialog();
-      () async {
-        final email = await openDialog();
-        return email;
-      };
-
-      // final email = await openDialog();
-      // return email;
+      displayEmail();
     }
-    return '';
+  }
+
+  // a helper function of onChangeParent to display the parent email
+  void displayEmail() async {
+    final inputemail = await openDialog();
+    if (inputemail == null) {
+      return;
+    }
+    setState(() {
+      email = inputemail;
+    });
   }
 
   // controller for grabbing and displaying input email
@@ -56,15 +61,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<String?> openDialog() => showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-            title: Text("Parent Email"),
+            title: const Text("Parent Email"),
             content: TextField(
               autofocus: true,
-              decoration: InputDecoration(hintText: "Enter your parent email"),
+              decoration:
+                  const InputDecoration(hintText: "Enter your parent email"),
               controller: controller,
             ),
             actions: [
               TextButton(
-                child: Text("Submit"),
+                child: const Text("Submit"),
                 onPressed: () {
                   Navigator.of(context).pop(controller.text);
                 },
@@ -131,11 +137,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Container(
               color: CupertinoTheme.of(context).barBackgroundColor,
               child: CupertinoFormRow(
-                prefix: Row(
-                  children: const <Widget>[
-                    SizedBox(width: 10),
-                    Text('Notifications')
-                  ],
+                prefix: const PrefixWidget(
+                  icon: CupertinoIcons.bell,
+                  title: 'Notifications',
+                  color: CupertinoColors.systemRed,
                 ),
                 child: CupertinoSwitch(
                   // This bool value toggles the switch.
@@ -158,11 +163,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Container(
               color: CupertinoTheme.of(context).barBackgroundColor,
               child: CupertinoFormRow(
-                prefix: Row(
-                  children: const <Widget>[
-                    SizedBox(width: 10),
-                    Text('Alert Purchases')
-                  ],
+                prefix: const PrefixWidget(
+                  icon: CupertinoIcons.money_dollar_circle,
+                  title: 'Alert Purchases',
+                  color: Color.fromARGB(255, 78, 202, 124),
                 ),
                 child: CupertinoSwitch(
                   // This bool value toggles the switch.
@@ -185,11 +189,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Container(
               color: CupertinoTheme.of(context).barBackgroundColor,
               child: CupertinoFormRow(
-                prefix: Row(
-                  children: const <Widget>[
-                    SizedBox(width: 10),
-                    Text('Allow Parent')
-                  ],
+                prefix: const PrefixWidget(
+                  icon: CupertinoIcons.lock,
+                  title: 'Allow Parent',
+                  color: Color.fromARGB(255, 241, 128, 63),
                 ),
                 child: CupertinoSwitch(
                   // This bool value toggles the switch.
@@ -197,29 +200,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   thumbColor: CupertinoColors.systemBlue,
                   trackColor: PC_YELLOW.withOpacity(0.2),
                   activeColor: PC_YELLOW,
-                  onChanged: (value) {
-                    final email = onChangeParent(value);
-
-                    setState(() {
-                      this.email = email;
-                    });
-                  },
+                  onChanged: onChangeParent,
                 ),
               ),
             ),
             //#endregion
 
-            const Padding(
-              padding: EdgeInsets.all(10.0),
+            Container(
+              color: CupertinoTheme.of(context).barBackgroundColor,
+              child: CupertinoFormRow(
+                prefix: const PrefixWidget(
+                  icon: CupertinoIcons.envelope,
+                  title: 'Parent Email',
+                  color: CupertinoColors.systemBlue,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      email,
+                      style: const TextStyle(fontSize: 16.5),
+                    ),
+                  ],
+                ),
+              ),
             ),
 
-            Row(
-              children: [
-                Text(
-                  email,
-                  style: const TextStyle(color: PC_YELLOW),
-                )
-              ],
+            const Padding(
+              padding: EdgeInsets.all(10.0),
             ),
 
             //#region LOGOUT BUTTON
@@ -245,5 +253,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //#endregion
           ],
         ));
+  }
+}
+
+class PrefixWidget extends StatelessWidget {
+  const PrefixWidget({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.color,
+  });
+
+  final IconData icon;
+  final String title;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.all(4.0),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Icon(icon, color: CupertinoColors.white),
+        ),
+        const SizedBox(width: 10),
+        Text(title)
+      ],
+    );
   }
 }

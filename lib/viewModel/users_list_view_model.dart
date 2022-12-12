@@ -81,7 +81,8 @@ class UsersListViewModel {
         role: "Student",
         accounts: userOneAccount,
         transactions: userOneTransactions,
-        cards: userOneCards);
+        cards: userOneCards,
+        email:"diego.jurado@pitt.edu");
     UserViewModel userOne = UserViewModel(user: userOnePrime);
     users["diegojurado"] = userOne;
   }

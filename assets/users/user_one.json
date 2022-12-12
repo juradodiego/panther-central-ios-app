@@ -2,6 +2,7 @@
   "FirstName": "Diego",
   "LastName" : "Jurado",
   "Role" : "student",
+  "Email": "diego.jurado@pitt.edu",
   "Accounts" : {
     "Panther Funds" :  12.34,
     "Dining Dollars" :  56.78,

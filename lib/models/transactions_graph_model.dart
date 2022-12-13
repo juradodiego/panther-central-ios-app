@@ -243,7 +243,7 @@ class TransactionsGraphState extends State<TransactionsGraph> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    final titles = <String>['PF', 'DD', 'OD', 'A DD', 'BB', ];
+    final titles = <String>['PF', 'DD', 'OC', 'AD', 'BB', ];
 
     final Widget text = Text(
       titles[value.toInt()],

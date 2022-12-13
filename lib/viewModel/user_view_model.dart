@@ -31,4 +31,13 @@ class UserViewModel {
   List<CustomCard> get cards {
     return user.cards;
   }
+
+  List<Transaction> filterTransactions(String toggle) {
+    List<Transaction> transactions = user.transactions;
+
+    List<Transaction> filtered;
+
+    return transactions;
+  }
+
 }

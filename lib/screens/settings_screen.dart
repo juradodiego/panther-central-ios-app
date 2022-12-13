@@ -162,10 +162,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               padding: EdgeInsets.all(10.0),
             ),
             //#endregion
-
             //#region Notification Switch
             Container(
               color: CupertinoTheme.of(context).barBackgroundColor,
+
               child: CupertinoFormRow(
                 prefix: const PrefixWidget(
                   icon: CupertinoIcons.bell,
@@ -317,3 +317,14 @@ class PrefixWidget extends StatelessWidget {
     );
   }
 }
+
+/**
+ * Settings Container
+ * Container with a Column child
+ * Column contains Rows
+ * Each Row is a Setting with an Icon, Title, and Switch
+ */
+
+
+
+

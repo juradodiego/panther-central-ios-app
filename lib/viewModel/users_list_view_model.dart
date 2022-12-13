@@ -46,9 +46,35 @@ class UsersListViewModel {
         description: 'UserOneTransactionThree',
         account: 'Panther Funds',
         amount: r'-$15.00');
+    Transaction userOneTransactionFour = Transaction(
+        date: DateTime.now(),
+        description: 'UserOneTransactionFour',
+        account: 'OC Dining Dollars',
+        amount: r'-$10.00');
+    Transaction userOneTransactionFive = Transaction(
+        date: DateTime.now(),
+        description: 'UserOneTransactionFive',
+        account: 'Add. Dining Dollars',
+        amount: r'-$5.00');
+    Transaction userOneTransactionSix = Transaction(
+        date: DateTime.now(),
+        description: 'UserOneTransactionSix',
+        account: 'Bonus Bucks',
+        amount: r'-$1.00');
+    Transaction userOneTransactionSeven = Transaction(
+        date: DateTime.now(),
+        description: 'UserOneTransactionSeven',
+        account: 'Panther Funds',
+        amount: r'$40.00');
+
+
     userOneTransactions.add(userOneTransactionOne);
     userOneTransactions.add(userOneTransactionTwo);
     userOneTransactions.add(userOneTransactionThree);
+    userOneTransactions.add(userOneTransactionFour);
+    userOneTransactions.add(userOneTransactionFive);
+    userOneTransactions.add(userOneTransactionSix);
+    userOneTransactions.add(userOneTransactionSeven);
     //#endregion
 
     //#region User One Cards

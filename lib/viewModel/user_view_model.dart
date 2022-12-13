@@ -3,7 +3,6 @@ import 'package:panther_central_ios_app/models/transaction_model.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 
 class UserViewModel {
-
   final User user;
 
   UserViewModel({required this.user});
@@ -34,10 +33,29 @@ class UserViewModel {
 
   List<Transaction> filterTransactions(String toggle) {
     List<Transaction> transactions = user.transactions;
-
     List<Transaction> filtered;
 
+    switch (toggle) {
+      case 'D':
+        filtered = transactions
+            .where((transaction) => transaction.date.day == DateTime.now().day)
+            .toList();
+        break;
+      case 'M':
+        filtered = transactions
+            .where(
+                (transaction) => transaction.date.month == DateTime.now().month)
+            .toList();
+        break;
+      case 'Y':
+        filtered = transactions
+            .where(
+                (transaction) => transaction.date.year == DateTime.now().year)
+            .toList();
+        break;
+      default:
+        filtered = transactions;
+    }
     return transactions;
   }
-
 }

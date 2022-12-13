@@ -102,10 +102,10 @@ class TransactionsGraphState extends State<TransactionsGraph> {
       aspectRatio: 2,
       child: Card(
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.only(top: 25, left: 10, right: 10),
+          padding: const EdgeInsets.only(top: 25, left: 5, right: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -206,7 +206,7 @@ class TransactionsGraphState extends State<TransactionsGraph> {
     const style = TextStyle(
       color: PC_BLUE,
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 10,
     );
     String text;
     // Find intervals between 0 and maxY
@@ -218,7 +218,21 @@ class TransactionsGraphState extends State<TransactionsGraph> {
       text = r'$20';
     } else if (value == 30) {
       text = r'$30';
-    }else {
+    } else if (value == 40) {
+      text = r'$40';
+    } else if (value == 50) {
+      text = r'$50';
+    } else if (value == 60) {
+      text = r'$60';
+    } else if (value == 70) {
+      text = r'$70';
+    } else if (value == 80) {
+      text = r'$80';
+    } else if (value == 90) {
+      text = r'$90';
+    } else if (value == 100) {
+      text = r'$100';
+    } else {
       return Container();
     }
     return SideTitleWidget(

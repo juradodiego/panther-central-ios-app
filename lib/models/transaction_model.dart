@@ -20,8 +20,20 @@ class Transaction {
 
   @override
   String toString() {
-    return '{ $date, $description, $account, $amount }';
+    // return a string with the date only including the day and the month
+
+    switch (account) {
+      case 'Panther Funds':
+        return ' ${date.month}/${date.day} $description $amount PF';
+      case 'Dining Dollars':
+        return ' ${date.month}/${date.day} $description $amount DD';
+      case 'OC Dining Dollars':
+        return ' ${date.month}/${date.day} $description $amount OCDD';
+      case 'Add. Dining Dollars':
+        return ' ${date.month}/${date.day} $description $amount ADD';
+      case 'Bonus Bucks':
+        return ' ${date.month}/${date.day} $description $amount BB';
+    }
+  return ' ${date.month}/${date.day} $description $amount';
   }
-
-
 }

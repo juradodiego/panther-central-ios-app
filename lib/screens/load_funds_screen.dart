@@ -40,7 +40,6 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                 child: IntrinsicHeight(
                   child: Stack(
                     children: [
-                      // TODO Add Font Size, Font Color
                       const Align(child: Text('QUICK RELOAD', style: TextStyle(color: PC_YELLOW, fontSize: 23,),)),
                       Positioned(
                         right: 10,
@@ -61,25 +60,28 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
       body: Center(
         child: Column(
           children: <Widget>[
-            /* Select Payment Method */
+            //#region SELECT PAYMENT METHOD BUTTON
+            const SizedBox(height: 10,),
             Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Container(
-                  width: 350,
-                  height: 75,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: ElevatedButton(
-                    child: paymentMethodRow(user, null),
+              padding: const EdgeInsets.only(top: 0),
+              child: SizedBox(
+                height: 75,
+                width: 350,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: PC_YELLOW,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (_) => ChoosePaymentScreen(user)));
                     },
-                  )),
+                    child: paymentMethodRow(user, null)),
+              ),
             ),
+            //#endregion
             /* SELECT AMOUNT DROPDOWN MENU */
             Padding(
               padding: const EdgeInsets.only(top: 15),
@@ -143,8 +145,8 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
   }
 
   Row paymentMethodRow(UserViewModel? user, CustomCard? card) {
-    const creditCard = Icon(Icons.credit_card_rounded);
-    const arrowIcon = Icon(Icons.arrow_forward_ios);
+    const creditCard = Icon(Icons.credit_card_rounded, color: PC_BLUE, size: 40,);
+    const arrowIcon = Icon(Icons.arrow_forward_ios, color: PC_BLUE,);
     CustomCard firstCard = user!.cards.first;
 
     if (card != null && card != firstCard) {
@@ -157,7 +159,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
           creditCard,
           Text(
             compound,
-            style: const TextStyle(fontSize: 24),
+            style: const TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
           arrowIcon,
@@ -168,7 +170,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         children: const [
           Text(
             "Add Payment Method",
-            style: TextStyle(fontSize: 24),
+            style: TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Spacer(),
           arrowIcon,
@@ -187,7 +189,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         ),
         Text(
           compound,
-          style: const TextStyle(fontSize: 20),
+          style: const TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const Spacer(),
         arrowIcon,

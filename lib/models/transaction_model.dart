@@ -22,4 +22,6 @@ class Transaction {
   String toString() {
     return '{ $date, $description, $account, $amount }';
   }
+
+
 }

@@ -98,7 +98,7 @@ class _ChoosePaymentScreenState extends State<ChoosePaymentScreen> {
                 },
                 child: const Text(
                   'Add New Payment Method',
-                  style: TextStyle(color: PC_BLUE, fontSize: 25),
+                  style: TextStyle(color: PC_BLUE, fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -135,7 +135,12 @@ class _ChoosePaymentScreenState extends State<ChoosePaymentScreen> {
             ),
             Text(
               compound,
-              style: const TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const Spacer(),
+            const Icon(Icons.check_circle, color: PC_BLUE, size: 30,),
+            const SizedBox(
+              width: 10,
             ),
           ])));
     }

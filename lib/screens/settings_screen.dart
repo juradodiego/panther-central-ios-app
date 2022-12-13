@@ -28,7 +28,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       allowParent = value!;
     });
     if (value!) {
+      //if (email == '') {
       displayEmail();
+      //}
     }
   }
 
@@ -36,6 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void displayEmail() async {
     final inputemail = await openDialog();
     if (inputemail == null) {
+      onChangeParent(false);
       return;
     }
     setState(() {
@@ -45,16 +48,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // controller for grabbing and displaying input email
   late TextEditingController controller;
+  // change the parent email by directly doing modifications in the textfield
+  //late TextEditingController changeEmailController;
 
   @override
   void initState() {
     super.initState();
+    //changeEmailController = TextEditingController();
     controller = TextEditingController();
+    //changeEmailController.text = email;
   }
 
   @override
   void dispose() {
     controller.dispose();
+    //changeEmailController.dispose();
     super.dispose();
   }
 
@@ -70,9 +78,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             actions: [
               TextButton(
+                child: const Text("Cancel"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
                 child: const Text("Submit"),
                 onPressed: () {
-                  Navigator.of(context).pop(controller.text);
+                  if (controller.text != '') {
+                    Navigator.of(context).pop(controller.text);
+                  } else {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: const Text("Alert"),
+                              content: const Text("Input cannot be empty!"),
+                              actions: <Widget>[
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text("OK"))
+                              ],
+                            ));
+                  }
                 },
               )
             ],
@@ -218,6 +248,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
+                      //controller: changeEmailController,
                       email,
                       style: const TextStyle(fontSize: 16.5),
                     ),

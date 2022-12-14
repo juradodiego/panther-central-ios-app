@@ -4,13 +4,14 @@ CS 1635 Term Project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a Flutter application made by CS 1635 Group 8 (Diego Jurado, Kangying Zi, and Enoch Li) for the Fall 2022 semester.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
+Have Flutter SDK setup on your machine. See [Flutter Setup](https://flutter.dev/docs/get-started/install) for more information.
+Note: This application only runs on iOS devices or iOS simulators.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Running the App
+1. Clone the repository
+2. Open the project in your IDE of choice (Preferred: Intellij IDEA)
+3. Run the app on your iOS device or iOS simulator
+4. Enjoy!

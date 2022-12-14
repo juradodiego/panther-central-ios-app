@@ -83,8 +83,9 @@ class TransactionScreen extends StatelessWidget {
             style: TextStyle(
                 color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          createTransactionList(
-              transactions),
+          SingleChildScrollView(child: createTransactionList(
+              transactions),)
+          ,
           //#endregion
         ],
       ),

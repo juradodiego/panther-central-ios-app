@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panther_central_ios_app/models/custom_card_list_model.dart';
 import 'package:panther_central_ios_app/models/transaction_list_model.dart';
 
 import 'package:panther_central_ios_app/custom_widgets/under_construction_widget.dart';
@@ -115,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
             AccountScreen(user!),
             //#endregion
             //#region DASHBOARD SCREEN
-            DashboardScreen(user!),
+            ChangeNotifierProvider(create: (_) => CustomCardList(user), child:DashboardScreen(user)),
             //#endregion
             //#region TRANSACTIONS SCREEN
             ChangeNotifierProvider(create: (_) => TransactionList(user), child: TransactionScreen(user)),

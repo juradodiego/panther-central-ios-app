@@ -8,8 +8,6 @@ import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 import 'package:tuple/tuple.dart';
 
-
-
 class TransactionsGraph extends StatefulWidget {
   final List<Transaction> transactions;
   final UserViewModel user;
@@ -34,24 +32,25 @@ class TransactionsGraphState extends State<TransactionsGraph> {
 
   int touchedGroupIndex = -1;
 
-  Map<String, Tuple2<double,double>> getMapping(UserViewModel user, List<Transaction> transactions) {
+  Map<String, Tuple2<double, double>> getMapping(
+      UserViewModel user, List<Transaction> transactions) {
     Map<String, Tuple2<double, double>> mapping = {};
     Iterable<String> accounts = user.accounts.keys;
-    for (String account in accounts){
+    for (String account in accounts) {
       double added = 0.0;
       double spent = 0.0;
-      for (Transaction transaction in transactions){
-        if (account == transaction.account){
-          String sign = transaction.amount.substring(0,1);
+      for (Transaction transaction in transactions) {
+        if (account == transaction.account) {
+          String sign = transaction.amount.substring(0, 1);
           double tAmount;
-          if (sign == '-'){
+          if (sign == '-') {
             tAmount = double.parse(transaction.amount.substring(2));
             tAmount *= -1;
           } else {
             tAmount = double.parse(transaction.amount.substring(1));
           }
           // double tAmount = double.parse(transaction.amount.replaceAll(RegExp(r'[^\w\s]+$'), ''));
-          if (tAmount < 0.0){
+          if (tAmount < 0.0) {
             spent -= tAmount;
           } else {
             added += tAmount;
@@ -66,24 +65,33 @@ class TransactionsGraphState extends State<TransactionsGraph> {
 
   @override
   Widget build(BuildContext context) {
-
     final UserViewModel user = widget.user;
-    final Map<String, Tuple2<double, double>> mapping = getMapping(user!, widget.transactions);
+    final Map<String, Tuple2<double, double>> mapping =
+        getMapping(user!, widget.transactions);
 
-    for (Tuple2<double,double> t in mapping.values){
+    for (Tuple2<double, double> t in mapping.values) {
       if (t.item1 > maxY) {
         maxY = t.item1;
       }
-      if(t.item2 > maxY) {
+      if (t.item2 > maxY) {
         maxY = t.item2;
       }
     }
 
-    final pantherFunds = makeGroupData(0, mapping['Panther Funds']!.item1, mapping['Panther Funds']!.item2);
-    final diningDollars = makeGroupData(1, mapping['Dining Dollars']!.item1, mapping['Dining Dollars']!.item2);
-    final offCampusDiningDollars = makeGroupData(2, mapping['OC Dining Dollars']!.item1, mapping['OC Dining Dollars']!.item2);
-    final addDiningDollars = makeGroupData(3, mapping['Add. Dining Dollars']!.item1, mapping['Add. Dining Dollars']!.item2);
-    final bonusBucks = makeGroupData(4, mapping['Bonus Bucks']!.item1, mapping['Bonus Bucks']!.item2);
+    final pantherFunds = makeGroupData(
+        0, mapping['Panther Funds']!.item1, mapping['Panther Funds']!.item2);
+    final diningDollars = makeGroupData(
+        1, mapping['Dining Dollars']!.item1, mapping['Dining Dollars']!.item2);
+    final offCampusDiningDollars = makeGroupData(
+        2,
+        mapping['OC Dining Dollars']!.item1,
+        mapping['OC Dining Dollars']!.item2);
+    final addDiningDollars = makeGroupData(
+        3,
+        mapping['Add. Dining Dollars']!.item1,
+        mapping['Add. Dining Dollars']!.item2);
+    final bonusBucks = makeGroupData(
+        4, mapping['Bonus Bucks']!.item1, mapping['Bonus Bucks']!.item2);
 
     final items = [
       pantherFunds,
@@ -138,8 +146,8 @@ class TransactionsGraphState extends State<TransactionsGraph> {
                           if (touchedGroupIndex != -1) {
                             var sum = 0.0;
                             for (final rod
-                            in showingBarGroups[touchedGroupIndex]
-                                .barRods) {
+                                in showingBarGroups[touchedGroupIndex]
+                                    .barRods) {
                               sum += rod.toY;
                             }
                             final avg = sum /
@@ -149,12 +157,12 @@ class TransactionsGraphState extends State<TransactionsGraph> {
 
                             showingBarGroups[touchedGroupIndex] =
                                 showingBarGroups[touchedGroupIndex].copyWith(
-                                  barRods: showingBarGroups[touchedGroupIndex]
-                                      .barRods
-                                      .map((rod) {
-                                    return rod.copyWith(toY: avg);
-                                  }).toList(),
-                                );
+                              barRods: showingBarGroups[touchedGroupIndex]
+                                  .barRods
+                                  .map((rod) {
+                                return rod.copyWith(toY: avg);
+                              }).toList(),
+                            );
                           }
                         });
                       },
@@ -231,6 +239,16 @@ class TransactionsGraphState extends State<TransactionsGraph> {
       text = r'$90';
     } else if (value == 100) {
       text = r'$100';
+    } else if (value == 110) {
+      text = r'$110';
+    } else if (value == 120) {
+      text = r'$120';
+    } else if (value == 130) {
+      text = r'$130';
+    } else if (value == 140) {
+      text = r'$140';
+    } else if (value == 150) {
+      text = r'$150';
     } else {
       return Container();
     }
@@ -242,7 +260,13 @@ class TransactionsGraphState extends State<TransactionsGraph> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    final titles = <String>['PF', 'DD', 'OC', 'AD', 'BB', ];
+    final titles = <String>[
+      'PF',
+      'DD',
+      'OC',
+      'AD',
+      'BB',
+    ];
 
     final Widget text = Text(
       titles[value.toInt()],

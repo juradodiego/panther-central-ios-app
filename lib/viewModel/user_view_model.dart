@@ -31,6 +31,12 @@ class UserViewModel {
     return user.cards;
   }
 
+  // add a Custom Card
+  List<CustomCard> addCard(CustomCard card) {
+    user.cards.add(card);
+    return user.cards;
+  }
+
   List<Transaction> filterTransactions(String toggle) {
     List<Transaction> transactions = user.transactions;
     List<Transaction> filtered;

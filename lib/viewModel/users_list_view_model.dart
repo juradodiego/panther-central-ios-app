@@ -71,6 +71,30 @@ class UsersListViewModel {
         description: 'UserOneTransactionEight',
         account: 'Dining Dollars',
         amount: r'-$30.00');
+    // Create userOneTransactionNin
+    Transaction userOneTransactionNine = Transaction(
+        date: DateTime.now().subtract(const Duration(days:340)),
+        description: 'UserOneTransactionNine',
+        account: 'OC Dining Dollars',
+        amount: r'-$20.00');
+    Transaction userOneTransactionTen = Transaction(
+        date: DateTime.now().subtract(const Duration(days:240)),
+        description: 'UserOneTransactionTen',
+        account: 'Add. Dining Dollars',
+        amount: r'-$10.00');
+    Transaction userOneTransactionEleven = Transaction(
+        date: DateTime.now().subtract(const Duration(days:210)),
+        description: 'UserOneTransactionEleven',
+        account: 'Bonus Bucks',
+        amount: r'-$5.00');
+    Transaction userOneTransactionTwelve = Transaction(
+        date: DateTime.now().subtract(const Duration(days:180)),
+        description: 'UserOneTransactionTwelve',
+        account: 'Panther Funds',
+        amount: r'$50.00');
+
+
+
 
     userOneTransactions.add(userOneTransactionOne);
     userOneTransactions.add(userOneTransactionTwo);
@@ -80,6 +104,10 @@ class UsersListViewModel {
     userOneTransactions.add(userOneTransactionSix);
     userOneTransactions.add(userOneTransactionSeven);
     userOneTransactions.add(userOneTransactionEight);
+    userOneTransactions.add(userOneTransactionNine);
+    userOneTransactions.add(userOneTransactionTen);
+    userOneTransactions.add(userOneTransactionEleven);
+    userOneTransactions.add(userOneTransactionTwelve);
     //#endregion
 
     //#region User One Cards

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/custom_widgets/under_construction_widget.dart';
+import 'package:panther_central_ios_app/models/add_payment_method_form.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
@@ -56,9 +57,8 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
               Center(),
-              UnderConstruction(),
-          // TODO Add Form Fields
-          // TODO Add Add Payment Method Method Button
+              AddPaymentMethodForm(user!),
+
         ])));
   }
 

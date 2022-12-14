@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:panther_central_ios_app/screens/load_funds_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
-class DashboardScreen extends StatelessWidget {
+class AccountScreen extends StatelessWidget {
   UserViewModel user;
 
-  DashboardScreen(this.user);
+  AccountScreen(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,6 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         children: <Widget>[
           //#region PANTHER FUNDS BALANCE DISPLAY
-
           const Text(
             "Panther Funds",
             style: TextStyle(
@@ -35,46 +33,6 @@ class DashboardScreen extends StatelessWidget {
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
-            ),
-          ),
-          //#endregion
-          //#region LOAD PANTHER FUNDS BUTTON
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 0),
-            child: SizedBox(
-              height: 75,
-              width: 350,
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: PC_YELLOW,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => LoadFundsScreen(user)));
-                  },
-                  child: Row(
-                    children: const [
-                      Text(
-                        'Load More Panther Funds',
-                        style: TextStyle(
-                            color: PC_BLUE,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 25,
-                        color: PC_BLUE,
-                      )
-                    ],
-                  )),
             ),
           ),
           //#endregion
@@ -113,6 +71,7 @@ class DashboardScreen extends StatelessWidget {
                 color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           /* OFF-CAMPUS DD ACCOUNT */
+          // TODO Display Account Balance
           Padding(
             padding: const EdgeInsets.only(top: 0),
             child: Container(
@@ -129,6 +88,56 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
           //#endregion
+          //#region ADD. DINING DOLLARS BALANCE DISPLAY
+          const SizedBox(
+            height: 15,
+          ),
+          const Text(
+            "Add. Dining Dollars",
+            style: TextStyle(
+                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 0),
+            child: Container(
+              height: 75,
+              width: 350,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              child: Center(
+                child: Text(
+                  r'$' + user!.accounts["Add. Dining Dollars"].toString(),
+                  style: const TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+          ),
+          //# endregion
+          //#region BONUS BUCKS BALANCE DISPLAY
+          const SizedBox(
+            height: 15,
+          ),
+          const Text(
+            "Bonus Bucks",
+            style: TextStyle(
+                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 0),
+            child: Container(
+              height: 75,
+              width: 350,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              child: Center(
+                child: Text(
+                  r'$' + user!.accounts["Bonus Bucks"].toString(),
+                  style: const TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+          ),
+          //# endregion
         ],
       ),
     );

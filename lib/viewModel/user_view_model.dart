@@ -38,13 +38,13 @@ class UserViewModel {
     switch (toggle) {
       case 'D':
         filtered = transactions
-            .where((transaction) => transaction.date.day == DateTime.now().day)
+            .where((transaction) => transaction.date.day == DateTime.now().day && transaction.date.month == DateTime.now().month && transaction.date.year == DateTime.now().year)
             .toList();
         break;
       case 'M':
         filtered = transactions
             .where(
-                (transaction) => transaction.date.month == DateTime.now().month)
+                (transaction) => transaction.date.month == DateTime.now().month && transaction.date.year == DateTime.now().year)
             .toList();
         break;
       case 'Y':
@@ -56,6 +56,10 @@ class UserViewModel {
       default:
         filtered = transactions;
     }
-    return transactions;
+
+    // sort the filtered transactions by date in ascending order
+    filtered.sort((a, b) => a.date.compareTo(b.date));
+
+    return filtered;
   }
 }

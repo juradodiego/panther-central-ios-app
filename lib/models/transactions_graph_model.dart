@@ -8,10 +8,13 @@ import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 import 'package:tuple/tuple.dart';
 
+
+
 class TransactionsGraph extends StatefulWidget {
-  final UserViewModel? user;
-  final String currentToggle;
-  const TransactionsGraph(this.user, this.currentToggle, {super.key});
+  final List<Transaction> transactions;
+  final UserViewModel user;
+
+  const TransactionsGraph(this.user, this.transactions, {super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -62,10 +65,10 @@ class TransactionsGraphState extends State<TransactionsGraph> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    final UserViewModel? user = widget.user;
-    final Map<String, Tuple2<double, double>> mapping = getMapping(user!, user!.filterTransactions(widget.currentToggle));
+  Widget build(BuildContext context) {
+
+    final UserViewModel user = widget.user;
+    final Map<String, Tuple2<double, double>> mapping = getMapping(user!, widget.transactions);
 
     for (Tuple2<double,double> t in mapping.values){
       if (t.item1 > maxY) {
@@ -93,10 +96,6 @@ class TransactionsGraphState extends State<TransactionsGraph> {
     rawBarGroups = items;
 
     showingBarGroups = rawBarGroups;
-  }
-
-  @override
-  Widget build(BuildContext context) {
 
     return AspectRatio(
       aspectRatio: 2,

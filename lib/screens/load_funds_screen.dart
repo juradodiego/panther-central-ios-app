@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:panther_central_ios_app/screens/dashboard_screen.dart';
+import 'package:panther_central_ios_app/screens/home_screen.dart';
 import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
@@ -124,7 +124,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => DashboardScreen(user)));
+                            builder: (_) => HomeScreen(user)));
                   },
                   child: const Text(
                     'Confirm',

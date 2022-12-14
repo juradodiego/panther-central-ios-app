@@ -32,12 +32,12 @@ class UsersListViewModel {
     //#region User One Transactions
     var userOneTransactions = <Transaction>[];
     Transaction userOneTransactionOne = Transaction(
-        date: DateTime.now(),
+        date: DateTime.now().subtract(const Duration(days:1)),
         description: 'UserOneTransactionOne',
         account: 'Panther Funds',
         amount: r'$30.00');
     Transaction userOneTransactionTwo = Transaction(
-        date: DateTime.now(),
+        date: DateTime.now().subtract(const Duration(days:2)),
         description: 'UserOneTransactionTwo',
         account: 'Dining Dollars',
         amount: r'-$20.00');
@@ -62,11 +62,15 @@ class UsersListViewModel {
         account: 'Bonus Bucks',
         amount: r'-$1.00');
     Transaction userOneTransactionSeven = Transaction(
-        date: DateTime.now(),
+        date: DateTime.now().subtract(const Duration(days:30)),
         description: 'UserOneTransactionSeven',
         account: 'Panther Funds',
         amount: r'$40.00');
-
+    Transaction userOneTransactionEight = Transaction(
+        date: DateTime.now().subtract(const Duration(days:370)),
+        description: 'UserOneTransactionEight',
+        account: 'Dining Dollars',
+        amount: r'-$30.00');
 
     userOneTransactions.add(userOneTransactionOne);
     userOneTransactions.add(userOneTransactionTwo);
@@ -75,6 +79,7 @@ class UsersListViewModel {
     userOneTransactions.add(userOneTransactionFive);
     userOneTransactions.add(userOneTransactionSix);
     userOneTransactions.add(userOneTransactionSeven);
+    userOneTransactions.add(userOneTransactionEight);
     //#endregion
 
     //#region User One Cards

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/models/address_model.dart';
-import 'package:panther_central_ios_app/models/custom_card_list_model.dart';
 import 'package:panther_central_ios_app/models/custom_card_model.dart';
 import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
-import 'package:provider/provider.dart';
 
 class AddPaymentMethodForm extends StatelessWidget {
   UserViewModel user;
@@ -23,7 +21,7 @@ class AddPaymentMethodForm extends StatelessWidget {
   final stateController = TextEditingController();
   final zipController = TextEditingController();
 
-  AddPaymentMethodForm(this.user); // the user who is adding a payment method
+  AddPaymentMethodForm(this.user, {super.key}); // the user who is adding a payment method
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +153,7 @@ class AddPaymentMethodForm extends StatelessWidget {
             height: 50,
             width: 250,
             decoration: BoxDecoration(
-                color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
+                color: pcYellow, borderRadius: BorderRadius.circular(20)),
             child: TextButton(
               onPressed: () {
                 // call add payment method function with text field values
@@ -174,7 +172,7 @@ class AddPaymentMethodForm extends StatelessWidget {
               },
               child: const Center(child: Text(
                 'Add Payment Method',
-                style: TextStyle(color: PC_BLUE, fontSize: 20),
+                style: TextStyle(color: pcBlue, fontSize: 20),
               ),),
             ),
           ),

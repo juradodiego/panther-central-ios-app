@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:panther_central_ios_app/models/transaction_model.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
-import 'package:tuple/tuple.dart';
 
 class TransactionList with ChangeNotifier{
 

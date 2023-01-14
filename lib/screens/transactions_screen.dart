@@ -16,7 +16,7 @@ class TransactionScreen extends StatelessWidget {
   ]; // 0 = Day, 1 = Month, 2 = Year
   UserViewModel user; // This is the user that is passed in from the home screen
 
-  TransactionScreen(this.user); // <--- Constructor
+  TransactionScreen(this.user, {super.key}); // <--- Constructor
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +45,10 @@ class TransactionScreen extends StatelessWidget {
                               getCurrentToggle(_selectedToggle));
                     },
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    selectedBorderColor: PC_BLUE,
-                    selectedColor: PC_BLUE,
-                    fillColor: PC_YELLOW,
-                    color: PC_YELLOW,
+                    selectedBorderColor: pcBlue,
+                    selectedColor: pcBlue,
+                    fillColor: pcYellow,
+                    color: pcYellow,
                     constraints: const BoxConstraints(
                       minHeight: 40.0,
                       minWidth: 40.0,
@@ -66,7 +66,7 @@ class TransactionScreen extends StatelessWidget {
           const Text(
             "Transaction Summary",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
               height: 250,
@@ -81,7 +81,7 @@ class TransactionScreen extends StatelessWidget {
           const Text(
             "Transaction History",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SingleChildScrollView(child: createTransactionList(
               transactions),)

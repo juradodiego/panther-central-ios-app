@@ -4,12 +4,11 @@ import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 class AccountScreen extends StatelessWidget {
   UserViewModel user;
 
-  AccountScreen(this.user);
+  AccountScreen(this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    const Color PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
-    const Color PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    const Color pcYellow = Color.fromARGB(255, 255, 185, 29);
 
     return SingleChildScrollView(
       child: Column(
@@ -18,7 +17,7 @@ class AccountScreen extends StatelessWidget {
           const Text(
             "Panther Funds",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0),
@@ -29,7 +28,7 @@ class AccountScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Panther Funds"].toString(),
+                  r'$' + user.accounts["Panther Funds"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -43,7 +42,7 @@ class AccountScreen extends StatelessWidget {
           const Text(
             "Dining Dollars",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0),
@@ -54,7 +53,7 @@ class AccountScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Dining Dollars"].toString(),
+                  r'$' + user.accounts["Dining Dollars"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -68,7 +67,7 @@ class AccountScreen extends StatelessWidget {
           const Text(
             "Off-Campus Dining Dollars",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           /* OFF-CAMPUS DD ACCOUNT */
           // TODO Display Account Balance
@@ -81,7 +80,7 @@ class AccountScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["OC Dining Dollars"].toString(),
+                  r'$' + user.accounts["OC Dining Dollars"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -95,7 +94,7 @@ class AccountScreen extends StatelessWidget {
           const Text(
             "Add. Dining Dollars",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0),
@@ -106,7 +105,7 @@ class AccountScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Add. Dining Dollars"].toString(),
+                  r'$' + user.accounts["Add. Dining Dollars"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -120,7 +119,7 @@ class AccountScreen extends StatelessWidget {
           const Text(
             "Bonus Bucks",
             style: TextStyle(
-                color: PC_YELLOW, fontSize: 20, fontWeight: FontWeight.bold),
+                color: pcYellow, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0),
@@ -131,7 +130,7 @@ class AccountScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Bonus Bucks"].toString(),
+                  r'$' + user.accounts["Bonus Bucks"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),

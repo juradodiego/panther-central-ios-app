@@ -140,13 +140,13 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
   }
 
   void confirmPurchase(String amount, UserViewModel? user) {
-    user!.accounts["Panther Funds"] = (user!.accounts["Panther Funds"]! +
-        double.parse(amount.substring(1)))!; // get current PF amount
+    user!.accounts["Panther Funds"] = (user.accounts["Panther Funds"]! +
+        double.parse(amount.substring(1))); // get current PF amount
   }
 
   Row paymentMethodRow(UserViewModel? user, CustomCard? card) {
-    const creditCard = Icon(Icons.credit_card_rounded, color: PC_BLUE, size: 40,);
-    const arrowIcon = Icon(Icons.arrow_forward_ios, color: PC_BLUE,);
+    const creditCard = Icon(Icons.credit_card_rounded, color: pcBlue, size: 40,);
+    const arrowIcon = Icon(Icons.arrow_forward_ios, color: pcBlue,);
     CustomCard firstCard = user!.cards.first;
 
     if (card != null && card != firstCard) {
@@ -159,7 +159,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
           creditCard,
           Text(
             compound,
-            style: const TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
+            style: const TextStyle(color: pcBlue, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
           arrowIcon,
@@ -170,7 +170,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         children: const [
           Text(
             "Add Payment Method",
-            style: TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(color: pcBlue, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Spacer(),
           arrowIcon,
@@ -189,7 +189,7 @@ class _LoadFundsScreenState extends State<LoadFundsScreen> {
         ),
         Text(
           compound,
-          style: const TextStyle(color: PC_BLUE, fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: pcBlue, fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const Spacer(),
         arrowIcon,

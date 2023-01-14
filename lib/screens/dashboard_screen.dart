@@ -5,7 +5,7 @@ import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 class DashboardScreen extends StatelessWidget {
   UserViewModel user;
 
-  DashboardScreen(this.user);
+  DashboardScreen(this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class DashboardScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Panther Funds"].toString(),
+                  r'$' + user.accounts["Panther Funds"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -96,7 +96,7 @@ class DashboardScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["Dining Dollars"].toString(),
+                  r'$' + user.accounts["Dining Dollars"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),
@@ -122,7 +122,7 @@ class DashboardScreen extends StatelessWidget {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Text(
-                  r'$' + user!.accounts["OC Dining Dollars"].toString(),
+                  r'$' + user.accounts["OC Dining Dollars"].toString(),
                   style: const TextStyle(fontSize: 40),
                 ),
               ),

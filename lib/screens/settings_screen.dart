@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/screens/login_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 
 class SettingsScreen extends StatefulWidget {
   final UserViewModel? user;
 
-  const SettingsScreen(this.user);
+  const SettingsScreen(this.user, {super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -111,11 +109,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     // Panther Central Theme Colors
-    const PC_YELLOW = Color.fromARGB(255, 255, 185, 29);
-    const PC_BLUE = Color.fromARGB(255, 0, 53, 148);
+    const pcYellow = Color.fromARGB(255, 255, 185, 29);
+    const pcBlue = Color.fromARGB(255, 0, 53, 148);
 
     return Scaffold(
-        backgroundColor: PC_BLUE,
+        backgroundColor: pcBlue,
         /* APPBAR: BACK OUT BUTTON + PAGE TITLE*/
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(100), // Set this height
@@ -124,7 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Container(
                 height: 75,
                 width: 75,
-                color: PC_BLUE,
+                color: pcBlue,
                 child: IntrinsicHeight(
                   child: Stack(
                     children: [
@@ -133,7 +131,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           child: Text(
                         'SETTINGS',
                         style: TextStyle(
-                          color: PC_YELLOW,
+                          color: pcYellow,
                           fontSize: 23,
                         ),
                       )),
@@ -142,7 +140,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back_ios),
                           iconSize: 40,
-                          color: PC_YELLOW,
+                          color: pcYellow,
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -176,8 +174,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   // This bool value toggles the switch.
                   value: notification,
                   thumbColor: CupertinoColors.systemBlue,
-                  trackColor: PC_YELLOW.withOpacity(0.2),
-                  activeColor: PC_YELLOW,
+                  trackColor: pcYellow.withOpacity(0.2),
+                  activeColor: pcYellow,
                   onChanged: (bool? value) {
                     // This is called when the user toggles the switch.
                     setState(() {
@@ -202,8 +200,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   // This bool value toggles the switch.
                   value: alertPurchases,
                   thumbColor: CupertinoColors.systemBlue,
-                  trackColor: PC_YELLOW.withOpacity(0.2),
-                  activeColor: PC_YELLOW,
+                  trackColor: pcYellow.withOpacity(0.2),
+                  activeColor: pcYellow,
                   onChanged: (bool? value) {
                     // This is called when the user toggles the switch.
                     setState(() {
@@ -228,8 +226,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   // This bool value toggles the switch.
                   value: allowParent,
                   thumbColor: CupertinoColors.systemBlue,
-                  trackColor: PC_YELLOW.withOpacity(0.2),
-                  activeColor: PC_YELLOW,
+                  trackColor: pcYellow.withOpacity(0.2),
+                  activeColor: pcYellow,
                   onChanged: onChangeParent,
                 ),
               ),
@@ -268,7 +266,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
-                    color: PC_YELLOW, borderRadius: BorderRadius.circular(20)),
+                    color: pcYellow, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -276,7 +274,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                   child: const Text(
                     'Logout',
-                    style: TextStyle(color: PC_BLUE, fontSize: 25),
+                    style: TextStyle(color: pcBlue, fontSize: 25),
                   ),
                 ),
               ),

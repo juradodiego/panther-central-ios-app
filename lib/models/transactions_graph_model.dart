@@ -1,9 +1,7 @@
-import 'dart:ffi';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:panther_central_ios_app/models/transaction_model.dart';
-import 'package:panther_central_ios_app/models/user_model.dart';
 import 'package:panther_central_ios_app/screens/choose_payment_screen.dart';
 import 'package:panther_central_ios_app/viewModel/user_view_model.dart';
 import 'package:tuple/tuple.dart';
@@ -67,7 +65,7 @@ class TransactionsGraphState extends State<TransactionsGraph> {
   Widget build(BuildContext context) {
     final UserViewModel user = widget.user;
     final Map<String, Tuple2<double, double>> mapping =
-        getMapping(user!, widget.transactions);
+        getMapping(user, widget.transactions);
 
     for (Tuple2<double, double> t in mapping.values) {
       if (t.item1 > maxY) {
@@ -211,7 +209,7 @@ class TransactionsGraphState extends State<TransactionsGraph> {
 
   Widget leftTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: PC_BLUE,
+      color: pcBlue,
       fontWeight: FontWeight.bold,
       fontSize: 10,
     );
@@ -271,7 +269,7 @@ class TransactionsGraphState extends State<TransactionsGraph> {
     final Widget text = Text(
       titles[value.toInt()],
       style: const TextStyle(
-        color: PC_BLUE,
+        color: pcBlue,
         fontWeight: FontWeight.bold,
         fontSize: 14,
       ),
